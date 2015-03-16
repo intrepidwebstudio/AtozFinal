@@ -933,11 +933,12 @@ function validate_user()
 {
 var username = $('#username').val();
 var userphone = $('#userphone').val();
-
+alert('90');
 alert(ajaxpath+'userinsert.php?useremail='+useremail);
 
 if(username !='' && userphone !='')
 {
+	alert('91');
 
 $.ajax({
 url:ajaxpath+'userinsert.php?useremail='+useremail,
@@ -948,15 +949,15 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
+		
 		alert(data);
 			var	login_Response = data.LoginResponse;
-			ebbu_twitter= '0';
-			ebbu_facebook= '0';
+			
 			if(login_Response.status=='100')
 			{
-				db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
+			//	db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
-				db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
+			//	db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
 			}
 			else{
 				$("#loaderScreen1").hide();
@@ -971,6 +972,7 @@ navigator.notification.alert("System error 83014. Please try again in a couple o
 });
 
 }else{
+	alert('92');
 navigator.notification.alert("Please enter details correctly.", alertCallback, "AtoZ", "Done");	
 	
 	}
@@ -989,7 +991,9 @@ navigator.notification.alert("Please enter details correctly.", alertCallback, "
 	
 	
 	
-	
+	function alertCallback(){
+}
+
 </script>
 
 
