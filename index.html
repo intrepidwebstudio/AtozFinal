@@ -893,10 +893,13 @@ function successCB() {
 
 
 function queryDB(tx){
+	alert('6');
 	tx.executeSql('SELECT * FROM atoz ',[],querySuccess,errorCB);
+	
 }
 
 function querySuccess(tx,result){
+	alert('7');
 			var length = result.rows.length;
 			if(length >0)
 			{
@@ -909,6 +912,7 @@ function querySuccess(tx,result){
 				swiperParent.swipeTo(1);	 //registration page
 			}
 			else{
+				alert('8');
 				swiperParent.swipeTo(2); 	// Select date and time
 			}
 }
