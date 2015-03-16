@@ -879,12 +879,16 @@ jQuery(document).ready(function(){
 	var db = window.openDatabase("atozuser", "1.0", "atoz user local Database", 200000); //will create database Dummy_DB or open it
 
 function populateDB(tx) {
+	alert('3');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
+	alert('4');
+	
 }
 function errorCB(err) {
 }
 function successCB() {
 	db.transaction(queryDB,errorCB);
+	alert('5');
 }
 
 
@@ -911,7 +915,9 @@ function querySuccess(tx,result){
 
 function checkuserstatus()
 {
+	alert('1');
 	db.transaction(populateDB, errorCB, successCB);	
+	alert('2');
 	}
 	
 	
