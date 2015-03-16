@@ -920,9 +920,7 @@ function querySuccess(tx,result){
 
 function checkuserstatus()
 {
-	alert('1');
 	db.transaction(populateDB, errorCB, successCB);	
-	alert('2');
 	}
 	
 	
@@ -936,14 +934,13 @@ var username = $('#username').val();
 var userphone = $('#userphone').val();
 alert('90');
 alert('ajaxpath='+ajaxpath);
-alert(ajaxpath+'userinsert.php?useremail='+useremail);
 
 if(username !='' && userphone !='')
 {
 	alert('91');
 
 $.ajax({
-url:ajaxpath+'userinsert.php?useremail='+useremail,
+url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone,
 type:'POST',
 contentType: "application/json",
 async: true,
