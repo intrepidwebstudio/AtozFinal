@@ -65,12 +65,12 @@
                                             <div class="form">
                                             <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
                                             <label>Name:</label>
-                                            <input type="text" name="ContactName" id="ContactName" value="" class="form_input required fontCustom" />
+                                            <input type="text" name="username" id="username" value="" class="form_input required fontCustom" />
                                             <label>Mobile Number:</label>
-                                            <input type="tel" name="ContactName" id="ContactName" value="" class="form_input required fontCustom" />
+                                            <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
                                             
                                             <label>Company Name:</label>
-                                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
+                                            <select type="text" name="company" id="company" class="form_input fontCustom" style="width:100%;" >
                                             	<option>CTS</option>
                                                 <option>TCS</option>
                                                 <option>Wipro</option>
@@ -78,7 +78,7 @@
                                             </select>
                                             
                                             <label>Company Location:</label>
-                                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
+                                            <select type="text" name="company" id="branch" class="form_input fontCustom" style="width:100%;" >
                                                 <option>Perungudi</option>
                                                 <option>Maraimalai nagar</option>
                                                 <option>shollinganallur</option>
@@ -86,7 +86,7 @@
                                             
                                             
                                             <div>&emsp;</div>
-                                            <input type="button" onclick="swiperParent.swipeTo(2);" name="submit" class="form_submit green green_borderbottom"  value="Submit" />
+                                            <input type="button" onclick="validate_user()" name="submit" class="form_submit green green_borderbottom"  value="Submit" />
 <center>                      
 										<label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
                                             </form>
@@ -909,11 +909,11 @@ function querySuccess(tx,result){
 					email= result.rows.item(i).email;				
 					phone= result.rows.item(i).phone;
 				}
-				swiperParent.swipeTo(1);	 //registration page
+				swiperParent.swipeTo(2);	 //registration page
 			}
 			else{
 				alert('8');
-				swiperParent.swipeTo(2); 	// Select date and time
+				swiperParent.swipeTo(1); 	// Select date and time
 			}
 }
 
@@ -929,16 +929,16 @@ function checkuserstatus()
 	
 	
 	
-function validate_email()
+function validate_user()
+{
+var username = $('#username').val();
+var userphone = $('#userphone').val();
+
+alert(ajaxpath+'userinsert.php?useremail='+useremail);
+
+if(username !='' && userphone !='')
 {
 
-var	useremail = $('#useremail').val();
-var checkk = 	IsEmail(useremail);
-if(checkk== false)
-{
-	navigator.notification.alert("Please enter a valid email address to proceed.", alertCallback, "Error !!", "OK");
-}
-else{
 $.ajax({
 url:ajaxpath+'userinsert.php?useremail='+useremail,
 type:'POST',
@@ -954,11 +954,8 @@ success: function(data)
 			ebbu_facebook= '0';
 			if(login_Response.status=='100')
 			{
-				$("#loaderScreen1").hide();
 				db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
-				//	alert('User Already Exists' );
-				$("#loaderScreen1").hide();
 				db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
 			}
 			else{
@@ -968,13 +965,16 @@ success: function(data)
 	},
 error: function(e)
 {
-$("#loaderScreen1").hide();	
+
 navigator.notification.alert("System error 83014. Please try again in a couple of minutes.", alertCallback, "Ebbu", "Done");
 }
 });
-}	
 
-	}	
+}else{
+navigator.notification.alert("Please enter details correctly.", alertCallback, "AtoZ", "Done");	
+	
+	}
+}	
 	
 	
 	

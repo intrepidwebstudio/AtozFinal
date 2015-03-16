@@ -6,10 +6,10 @@
         id        = "com.inpws.atoz"
         version   = "1.0.0">
 
-    <name>Ebbu</name>
+    <name>AtoZ</name>
 
     <description>
-        Ebbu Online article app
+        AtoZ Restaurent
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
