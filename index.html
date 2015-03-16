@@ -881,7 +881,7 @@ jQuery(document).ready(function(){
 
 function populateDB(tx) {
 	alert('3');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
 	alert('4');
 	
 }
@@ -906,15 +906,17 @@ function querySuccess(tx,result){
 			{
 				for(var i=0; i< length ; i++)
 				{
-					user_id = result.rows.item(i).user_id;
-					email= result.rows.item(i).email;				
-					phone= result.rows.item(i).phone;
+				var	user_id = result.rows.item(i).user_id;
+				var	username= result.rows.item(i).username;				
+				var	phone= result.rows.item(i).phone;
 				}
-				swiperParent.swipeTo(2);	 //registration page
+			alert('user_id = '+user_id +'  '+'username = '+username+' phone ='+phone );	
+				
+				swiperParent.swipeTo(2);   // Select date and time	
 			}
 			else{
 				alert('8');
-				swiperParent.swipeTo(1); 	// Select date and time
+				swiperParent.swipeTo(1);  //registration page
 			}
 }
 
@@ -937,7 +939,7 @@ alert('ajaxpath='+ajaxpath);
 
 if(username !='' && userphone !='')
 {
-	alert('91');
+alert('91');
 $.support.cors = true;
 $.ajax({
 url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone,
@@ -949,17 +951,15 @@ crossDomain: true,
 success: function(data)
 	{
 		
-		alert(data);
 			var	login_Response = data.LoginResponse;
 			
 			if(login_Response.status=='100')
 			{
-			//	db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
+				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
-			//	db.transaction( function(tx){ insertvalues(tx, useremail, login_Response.user_id, ebbu_twitter,ebbu_facebook)}, ErrorCallBack );	
+				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}
 			else{
-				$("#loaderScreen1").hide();
 					navigator.notification.alert("Network problem , please try after sometime !!", alertCallback, "Ebbu", "OK");
 				}	
 	},
@@ -980,6 +980,19 @@ navigator.notification.alert("Please enter details correctly.", alertCallback, "
 	
 	
 	
+	
+function insertvalues(tx,parameter1,parameter2,parameter3)
+{
+	globalusername = parameter1;
+	globaluserid= parameter2;
+	globaluserphone= parameter3;
+	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
+	}
+function userinsert()
+{
+	swiperParent.swipeTo(2);
+	
+	}
 	
 	
 	
