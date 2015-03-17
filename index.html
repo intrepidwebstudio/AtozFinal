@@ -70,18 +70,13 @@
                                             <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
                                             
                                             <label>Company Name:</label>
-                                            <select type="text" name="companyid" id="companyid" class="form_input fontCustom" style="width:100%;" >
-                                            	<option value="2">CTS</option>
-                                                <option value="3">TCS</option>
-                                                <option value="4">Wipro</option>
-                                                <option value="5">Infosys</option>
+                                            <select type="text" name="companyid" id="companyid" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
+                                            <option>Select company</option>
                                             </select>
                                             
                                             <label>Company Location:</label>
                                             <select type="text" name="branchid" id="branchid" class="form_input fontCustom" style="width:100%;" >
-                                                <option value="1">Perungudi</option>
-                                                <option value="2">Maraimalai nagar</option>
-                                                <option value="3">shollinganallur</option>
+                                            <option>Select Location</option>
                                             </select>
                                             
                                             
@@ -910,10 +905,8 @@ function querySuccess(tx,result){
 				var	username= result.rows.item(i).username;				
 				var	phone= result.rows.item(i).phone;
 				}
-			
-				
 				swiperParent.swipeTo(2);   // Select date and time	
-				alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
+				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
 			}//if close
 			else{
 				alert('8');
@@ -1022,6 +1015,88 @@ function ErrorCallBack(err){
 }
 
 
+
+
+
+
+
+
+
+function loadcompany()
+{
+	alert('loadcompany 1');
+$.support.cors = true;	
+$.ajax({
+url:ajaxpath+'loadcompany.php',
+type:'POST',
+contentType: "application/json",
+async: true,
+dataType: 'json',
+crossDomain: true,
+success: function(data)
+	{
+		alert('load company success');
+		var companydetails=data.response;
+		var companyOptions='';	
+		var companyData=companydetails.companydata;
+		
+$.each(companyData, function(index, element) {
+	
+	alert('<option value="'+element.company_id+'">'+element.company_name+'</option>');
+	
+	companyOptions+='<option value="'+element.company_id+'">'+element.company_name+'</option>';
+	});
+	
+	$('#companyid').html('');
+	$('#companyid').append(companyOptions);
+		
+	},
+error:function(e)
+{
+	}	
+
+		});
+	
+	}
+	
+
+function loadbranch()
+{
+	if($('#companyid').val()=='')
+	{
+		navigator.notification.alert("Please select company name first", alertCallback, "AtoZ", "Done");	
+		
+		}
+	else{
+		$.support.cors = true;
+		$.ajax({
+		url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+		crossDomain: true,
+		success: function(data)
+			{
+				
+			},
+		error:function(e)
+		{
+			
+			}
+			
+			
+			});
+		
+		}	
+	
+	}
+
+
+$(document).ready(function () {
+	alert('loadcompany');
+	loadcompany();
+});
 </script>
 
 
