@@ -70,18 +70,18 @@
                                             <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
                                             
                                             <label>Company Name:</label>
-                                            <select type="text" name="company" id="company" class="form_input fontCustom" style="width:100%;" >
-                                            	<option>CTS</option>
-                                                <option>TCS</option>
-                                                <option>Wipro</option>
-                                                <option>Infosys</option>
+                                            <select type="text" name="companyid" id="companyid" class="form_input fontCustom" style="width:100%;" >
+                                            	<option value="2">CTS</option>
+                                                <option value="3">TCS</option>
+                                                <option value="4">Wipro</option>
+                                                <option value="5">Infosys</option>
                                             </select>
                                             
                                             <label>Company Location:</label>
-                                            <select type="text" name="company" id="branch" class="form_input fontCustom" style="width:100%;" >
-                                                <option>Perungudi</option>
-                                                <option>Maraimalai nagar</option>
-                                                <option>shollinganallur</option>
+                                            <select type="text" name="branchid" id="branchid" class="form_input fontCustom" style="width:100%;" >
+                                                <option value="1">Perungudi</option>
+                                                <option value="2">Maraimalai nagar</option>
+                                                <option value="3">shollinganallur</option>
                                             </select>
                                             
                                             
@@ -934,16 +934,18 @@ function validate_user()
 {
 var username = $('#username').val();
 var userphone = $('#userphone').val();
+var branch_id = $('#branchid').val();
+var company_id = $('#companyid').val();
 alert('90');
 alert('ajaxpath='+ajaxpath);
 
 if(username !='' && userphone !='')
 {
 alert('91');
-alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone);
+alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id);
 $.support.cors = true;
 $.ajax({
-url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone,
+url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id,
 type:'POST',
 contentType: "application/json",
 async: true,
