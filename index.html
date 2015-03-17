@@ -906,13 +906,14 @@ function querySuccess(tx,result){
 			{
 				for(var i=0; i< length ; i++)
 				{
-				var	user_id = result.rows.item(i).user_id;
+				var	user_id1 = result.rows.item(i).user_id;
 				var	username= result.rows.item(i).username;				
 				var	phone= result.rows.item(i).phone;
 				}
-			alert('user_id = '+user_id +'  '+'username = '+username+' phone ='+phone );	
+			
 				
 				swiperParent.swipeTo(2);   // Select date and time	
+				alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	
 			}//if close
 			else{
 				alert('8');
