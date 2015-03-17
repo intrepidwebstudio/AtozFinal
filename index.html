@@ -954,9 +954,11 @@ crossDomain: true,
 success: function(data)
 	{
 		alert(data.LoginResponse);
+		
+		alert(data.LoginResponse.status);
 			var	login_Response = data.LoginResponse;
 			
-			alert(login_Response.status);
+			alert(login_Response[0].status);
 			if(login_Response.status=='100')
 			{
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
