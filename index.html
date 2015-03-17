@@ -1037,8 +1037,10 @@ success: function(data)
 	{
 		alert('load company success');
 		var companydetails=data.response;
-		var companyOptions='';	
+		var companyOptions='';
 		var companyData=companydetails.companydata;
+		
+		companyOptions+='<option value="">Select Company</option>';
 		
 $.each(companyData, function(index, element) {
 	
@@ -1062,31 +1064,50 @@ error:function(e)
 
 function loadbranch()
 {
-	if($('#companyid').val()=='')
+	if($('#companyid').val()!='')
 	{
-		navigator.notification.alert("Please select company name first", alertCallback, "AtoZ", "Done");	
+			alert('loadBranch 1');
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'loadbranch.php',
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			crossDomain: true,
+			success: function(data)
+				{
+					alert('load branch success');
+					var branchdetails=data.response;
+					var branchOptions='';
+					
+					if(branchdetails.status=='100')
+					{
+						var branchData=branchdetails.branchdata;
+						branchOptions+='<option value="">Select branch</option>';
+						$.each(branchData, function(index, element) {
+						alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
+						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';
+						});
+						$('#branchid').html('');
+						$('#branchid').append(branchOptions);
+					}else{
+						
+						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
+						}
+					
+				},
+			error:function(e)
+			{
+						navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+				}	
+			
+					});
 		
 		}
 	else{
-		$.support.cors = true;
-		$.ajax({
-		url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id,
-		type:'POST',
-		contentType: "application/json",
-		async: true,
-		dataType: 'json',
-		crossDomain: true,
-		success: function(data)
-			{
-				
-			},
-		error:function(e)
-		{
-			
-			}
-			
-			
-			});
+		
+		navigator.notification.alert("Kindly Select Your company", alertCallback, "AtoZ", "Done");	
 		
 		}	
 	
