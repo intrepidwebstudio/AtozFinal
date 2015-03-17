@@ -956,11 +956,14 @@ success: function(data)
 		alert(data.LoginResponse);
 		
 		alert(data.LoginResponse.status);
-			var	login_Response = data.LoginResponse;
+//			var	login_Response = data.LoginResponse;
 			
 		//	alert(login_Response[0].status); 
-			if(login_Response.status=='100')
+			if(data.LoginResponse.status=='100')
 			{
+				alert('11');
+				var	login_Response = data.LoginResponse;
+				alert('14');
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
@@ -989,10 +992,13 @@ navigator.notification.alert("Please enter details correctly.", alertCallback, "
 	
 function insertvalues(tx,parameter1,parameter2,parameter3)
 {
+	alert('12');
 	globalusername = parameter1;
 	globaluserid= parameter2;
 	globaluserphone= parameter3;
+	alert(parameter1+'===='+parameter2+'===='+parameter3);
 	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
+	
 	}
 function userinsert()
 {
