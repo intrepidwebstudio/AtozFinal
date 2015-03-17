@@ -940,6 +940,7 @@ alert('ajaxpath='+ajaxpath);
 if(username !='' && userphone !='')
 {
 alert('91');
+alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone);
 $.support.cors = true;
 $.ajax({
 url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone,
