@@ -22,7 +22,6 @@
 </head>
 <body>
 
-
   <div id="header">
       <div class="gohome radius20"><a href="#"><img src="images/icons/home.png" alt="" title="" /></a></div>
       <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(9);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
@@ -103,7 +102,7 @@
       <!--Page 2 content-->
       
       <div class="swiper-slide sliderbg">
-      <div class="swiper-container swiper-nested ">
+      <div class="swiper-container swiper-nested">
                <div class="swiper-wrapper">
                     <div class="swiper-slide swiper-no-swiping">
                               <div class="slide-inner">
@@ -113,19 +112,19 @@
                                             <h2 id="Note"></h2>
                                             <div class="form">
                                             <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
-                                            <label>Date:</label>
-                                            <input type="text" name="ContactName" id="ContactName" value="" class="form_input required" />
-                                            <label>Time:</label>
-                                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
-                                            	<option>12:15 pm</option>
+                                    	    	   <label>Date:</label>
+                                            <input type="date" name="ContactName" id="ContactName" value="" class="form_input required" />
+                                 	    	       <label>Time:</label>
+                                          <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
+<!--                                            	<option>12:15 pm</option>
                                                 <option>1:45 pm</option>
                                                 <option>7:30 pm</option>
                                                 <option>8:30 pm</option>
-                                            </select>
+-->                                            </select>
                                             <div>&emsp;</div>
-                                            <input type="button" onclick="swiperParent.swipeTo(3);" name="submit" class="form_submit green green_borderbottom"  value="Next" />
-<center>                      
-										<label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
+                                      <input type="button" onclick="swiperParent.swipeTo(3);" name="submit" class="form_submit green green_borderbottom"  value="Next" />
+                                    <center>                      
+                                    <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
                                             </form>
                                             </div>
 
@@ -135,7 +134,7 @@
                                         </div>
                                         <!--End of page container-->
                               </div>
-                    </div>
+                      </div>
               </div>
               <div class="swiper-scrollbar"></div>
      </div>
@@ -920,10 +919,6 @@ function checkuserstatus()
 	}
 	
 	
-	
-	
-	
-	
 function validate_user()
 {
 var username = $('#username').val();
@@ -951,7 +946,6 @@ success: function(data)
 		
 		alert(data.LoginResponse.status);
 //			var	login_Response = data.LoginResponse;
-			
 		//	alert(login_Response[0].status); 
 			if(data.LoginResponse.status=='100')
 			{
@@ -1118,6 +1112,35 @@ $(document).ready(function () {
 	alert('loadcompany');
 	loadcompany();
 });
+
+
+
+function loadmenutime()
+{
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loadbranch.php',
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+		 {
+				
+				
+				
+				
+			}
+		
+		});
+	
+	
+	
+	}
+
+
+
 </script>
 
 
