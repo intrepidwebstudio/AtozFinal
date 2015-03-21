@@ -113,7 +113,7 @@
                                             <div class="form">
                                             <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
                                     	    	   <label>Date:</label>
-                                            <input type="date" name="ContactName" id="ContactName" value="" class="form_input required" />
+                                            <input type="date" name="menu_date" id="menu_date" value="" class="form_input required" />
                                  	    	       <label>Time:</label>
                                           <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
 <!--                                            	<option>12:15 pm</option>
@@ -903,6 +903,12 @@ function querySuccess(tx,result){
 				var	user_id1 = result.rows.item(i).user_id;
 				var	username= result.rows.item(i).username;				
 				var	phone= result.rows.item(i).phone;
+				
+				globalusername = username;
+				globaluserid= user_id1;
+				globaluserphone= phone;
+
+				
 				}
 				swiperParent.swipeTo(2);   // Select date and time	
 				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
@@ -1117,9 +1123,11 @@ $(document).ready(function () {
 
 function loadmenutime()
 {
+if($('#menu_date').val()!='')
+{	
 	$.support.cors = true;	
 	$.ajax({
-	url:ajaxpath+'loadbranch.php',
+	url:ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
 	type:'POST',
 	contentType: "application/json",
 	async: true,
@@ -1127,17 +1135,19 @@ function loadmenutime()
 	crossDomain: true,
 	success: function(data)
 		 {
-				
-				
+			var status = data.status;
+			alert(status.status);
+			alert(status.message); 	
+							
 				
 				
 			}
 		
 		});
 	
+	}//else do nothing
 	
-	
-	}
+}
 
 
 
