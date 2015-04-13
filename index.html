@@ -1067,8 +1067,10 @@ function loadbranch()
 	if($('#companycode').val()!='')
 	{
 			alert('loadBranch 1');
+			
+			alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
 			$.support.cors = true;	
-			$.ajax({
+			 $.ajax({
 			url:ajaxpath+'loadbranch.php?companycode='+$('#companycode').val(),
 			type:'POST',
 			contentType: "application/json",
