@@ -1049,12 +1049,14 @@ $.each(companyData, function(index, element) {
 	companyOptions+='<option value="'+element.companycode+'">'+element.company_name+'</option>';
 	});
 	
-	$('#companyid').html('');
-	$('#companyid').append(companyOptions);
+	$('#companycode').html('');
+	$('#companycode').append(companyOptions);
 		
 	},
 error:function(e)
 {
+	alert("Error =  "+ e.message );
+	
 	}	
 		});
 	}
@@ -1062,7 +1064,7 @@ error:function(e)
 
 function loadbranch()
 {
-	if($('#companyid').val()!='')
+	if($('#companycode').val()!='')
 	{
 			alert('loadBranch 1');
 			$.support.cors = true;	
