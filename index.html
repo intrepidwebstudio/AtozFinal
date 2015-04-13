@@ -1125,6 +1125,9 @@ $(document).ready(function () {
 
 function loadmenutime()
 {
+	
+	alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+	
 if($('#menu_date').val()!='')
 {	
 	$.support.cors = true;	
