@@ -69,7 +69,7 @@
                                             <input type="tel" name="userphone" id="userphone" value="" class="form_input required fontCustom" />
                                             
                                             <label>Company Name:</label>
-                                            <select type="text" name="companyid" id="companyid" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
+                                            <select type="text" name="companycode" id="companycode" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
                                             <option>Select company</option>
                                             </select>
                                             
@@ -930,17 +930,17 @@ function validate_user()
 var username = $('#username').val();
 var userphone = $('#userphone').val();
 var branch_id = $('#branchid').val();
-var company_id = $('#companyid').val();
+var companycode = $('#companycode').val();
 alert('90');
 alert('ajaxpath='+ajaxpath);
 
 if(username !='' && userphone !='')
 {
 alert('91');
-alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id);
+alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode);
 $.support.cors = true;
 $.ajax({
-url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&company_id='+company_id,
+url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode,
 type:'POST',
 contentType: "application/json",
 async: true,
@@ -1044,9 +1044,9 @@ success: function(data)
 		
 $.each(companyData, function(index, element) {
 	
-	alert('<option value="'+element.company_id+'">'+element.company_name+'</option>');
+	alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
 	
-	companyOptions+='<option value="'+element.company_id+'">'+element.company_name+'</option>';
+	companyOptions+='<option value="'+element.companycode+'">'+element.company_name+'</option>';
 	});
 	
 	$('#companyid').html('');
@@ -1056,9 +1056,7 @@ $.each(companyData, function(index, element) {
 error:function(e)
 {
 	}	
-
 		});
-	
 	}
 	
 
@@ -1069,7 +1067,7 @@ function loadbranch()
 			alert('loadBranch 1');
 			$.support.cors = true;	
 			$.ajax({
-			url:ajaxpath+'loadbranch.php',
+			url:ajaxpath+'loadbranch.php?companycode='+$('#company_code').val(),
 			type:'POST',
 			contentType: "application/json",
 			async: true,
