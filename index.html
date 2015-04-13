@@ -1147,6 +1147,10 @@ if($('#menu_date').val()!='')
 			
 			if(data.status=='100')
 			{
+				alert('status =100');
+				
+				alert(JSON.stringify(menuResponse));
+				
 				$.each(menuResponse, function(index, element) {
 						
 						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
