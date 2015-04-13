@@ -1140,10 +1140,26 @@ if($('#menu_date').val()!='')
 	crossDomain: true,
 	success: function(data)
 		 {
-			var status = data.status;
-			alert(status.status);
-			alert(status.message); 	
-							
+			//var status = data.status;
+
+			var menuResponse=data.response;
+			var menuoptions='';
+			
+			if(data.status=='100')
+			{
+				$.each(menuResponse, function(index, element) {
+						
+						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
+						
+					
+					});
+					
+					alert(menuoptions);
+					$('#delivery_time').html('');
+					$('#delivery_time').append(menuoptions);
+				
+			}
+
 				
 				
 			}
