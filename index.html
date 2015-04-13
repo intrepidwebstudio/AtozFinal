@@ -1143,9 +1143,10 @@ if($('#menu_date').val()!='')
 			//var status = data.status;
 
 			var menuResponse=data.response;
+			var Status=data.status;
 			var menuoptions='';
 			
-			if(data.status=='100')
+			if(Status.status=='100')
 			{
 				alert('status =100');
 				
@@ -1162,11 +1163,18 @@ if($('#menu_date').val()!='')
 					$('#delivery_time').html('');
 					$('#delivery_time').append(menuoptions);
 				
-			}
+			}else{
+				
+				alert('status thappu');
+				}
 
 				
 				
-			}
+			},
+		error: function(e)
+		{
+				navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+			}	
 		
 		});
 	
