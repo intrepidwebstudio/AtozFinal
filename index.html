@@ -874,27 +874,27 @@ jQuery(document).ready(function(){
 	var db = window.openDatabase("atozuser", "1.0", "atoz user local Database", 200000); //will create database Dummy_DB or open it
 
 function populateDB(tx) {
-	alert('3');
+	//alert('3');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
-	alert('4');
+	//alert('4');
 	
 }
 function errorCB(err) {
 }
 function successCB() {
 	db.transaction(queryDB,errorCB);
-	alert('5');
+	//alert('5');
 }
 
 
 function queryDB(tx){
-	alert('6');
+	//alert('6');
 	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
 	
 }
 
 function querySuccess(tx,result){
-	alert('7');
+	//alert('7');
 			var length = result.rows.length;
 			if(length >0)
 			{
@@ -914,7 +914,7 @@ function querySuccess(tx,result){
 				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
 			}//if close
 			else{
-				alert('8');
+				//alert('8');
 				swiperParent.swipeTo(1);  //registration page
 			}
 }
@@ -931,13 +931,13 @@ var username = $('#username').val();
 var userphone = $('#userphone').val();
 var branch_id = $('#branchid').val();
 var companycode = $('#companycode').val();
-alert('90');
-alert('ajaxpath='+ajaxpath);
+//alert('90');
+//alert('ajaxpath='+ajaxpath);
 
 if(username !='' && userphone !='')
 {
-alert('91');
-alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode);
+//alert('91');
+//alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode);
 $.support.cors = true;
 $.ajax({
 url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode,
@@ -948,16 +948,16 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
-		alert(data.LoginResponse);
+	//	alert(data.LoginResponse);
 		
-		alert(data.LoginResponse.status);
+	//	alert(data.LoginResponse.status);
 //			var	login_Response = data.LoginResponse;
 		//	alert(login_Response[0].status); 
 			if(data.LoginResponse.status=='100')
 			{
-				alert('11');
+		//		alert('11');
 				var	login_Response = data.LoginResponse;
-				alert('14');
+			//	alert('14');
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
@@ -974,7 +974,7 @@ navigator.notification.alert("System error 83014. Please try again in a couple o
 });
 
 }else{
-	alert('92');
+//	alert('92');
 navigator.notification.alert("Please enter details correctly.", alertCallback, "AtoZ", "Done");	
 	
 	}
@@ -986,11 +986,11 @@ navigator.notification.alert("Please enter details correctly.", alertCallback, "
 	
 function insertvalues(tx,parameter1,parameter2,parameter3)
 {
-	alert('121');
+//	alert('121');
 	globalusername = parameter1;
 	globaluserid= parameter2;
 	globaluserphone= parameter3;
-	alert(parameter1+'===='+parameter2+'===='+parameter3);
+//	alert(parameter1+'===='+parameter2+'===='+parameter3);
 	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
 	
 	}
@@ -1024,7 +1024,7 @@ function ErrorCallBack(err){
 
 function loadcompany()
 {
-	alert('loadcompany 1');
+//	alert('loadcompany 1');
 $.support.cors = true;	
 $.ajax({
 url:ajaxpath+'loadcompany.php',
@@ -1035,7 +1035,7 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
-		alert('load company success');
+	//	alert('load company success');
 		var companydetails=data.response;
 		var companyOptions='';
 		var companyData=companydetails.companydata;
@@ -1044,7 +1044,7 @@ success: function(data)
 		
 $.each(companyData, function(index, element) {
 	
-	alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
+//	alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
 	
 	companyOptions+='<option value="'+element.companycode+'">'+element.company_name+'</option>';
 	});
@@ -1055,7 +1055,7 @@ $.each(companyData, function(index, element) {
 	},
 error:function(e)
 {
-	alert("Error =  "+ e.message );
+//	alert("Error =  "+ e.message );
 	
 	}	
 		});
@@ -1066,9 +1066,9 @@ function loadbranch()
 {
 	if($('#companycode').val()!='')
 	{
-			alert('loadBranch 1');
+	//		alert('loadBranch 1');
 			
-			alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
+		//	alert('PAth = '+ajaxpath+'loadbranch.php?companycode='+$('#companycode').val());
 			$.support.cors = true;	
 			 $.ajax({
 			url:ajaxpath+'loadbranch.php?companycode='+$('#companycode').val(),
@@ -1079,7 +1079,7 @@ function loadbranch()
 			crossDomain: true,
 			success: function(data)
 				{
-					alert('load branch success');
+				//	alert('load branch success');
 					var branchdetails=data.response;
 					var branchOptions='';
 					
@@ -1088,7 +1088,7 @@ function loadbranch()
 						var branchData=branchdetails.branchdata;
 						branchOptions+='<option value="">Select branch</option>';
 						$.each(branchData, function(index, element) {
-						alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
+				//		alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
 						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';
 						});
 						$('#branchid').html('');
@@ -1117,7 +1117,7 @@ function loadbranch()
 
 
 $(document).ready(function () {
-	alert('loadcompany');
+//	alert('loadcompany');
 	loadcompany();
 });
 
@@ -1126,10 +1126,12 @@ $(document).ready(function () {
 function loadmenutime()
 {
 	
-	alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+//	alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
 	
 if($('#menu_date').val()!='')
 {	
+alert('inside menu_date');
+
 	$.support.cors = true;	
 	$.ajax({
 	url:ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
@@ -1143,14 +1145,15 @@ if($('#menu_date').val()!='')
 			//var status = data.status;
 
 			var menuResponse=data.response;
-			var Status=data.status;
+//			var Status=data.status;
 			var menuoptions='';
 			
-			if(Status.status=='100')
+			alert('data.status.status =' +data.status.status);
+			if(data.status.status=='100')
 			{
-				alert('status =100');
+	//			alert('status =100');
 				
-				alert(JSON.stringify(menuResponse));
+		//		alert(JSON.stringify(menuResponse));
 				
 				$.each(menuResponse, function(index, element) {
 						
@@ -1159,13 +1162,13 @@ if($('#menu_date').val()!='')
 					
 					});
 					
-					alert(menuoptions);
+			//		alert(menuoptions);
 					$('#delivery_time').html('');
 					$('#delivery_time').append(menuoptions);
 				
 			}else{
 				
-				alert('status thappu');
+			//	alert('status thappu');
 				}
 
 				
