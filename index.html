@@ -1171,6 +1171,9 @@ alert('inside menu_date');
 
 function loadmenulist()
 {
+	
+	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+	
 	$.support.cors = true;	
 	$.ajax({
 	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
@@ -1242,12 +1245,15 @@ $('#category_cuisine_options').html(category_cuisine_options);
 
 
 			}
+			
+			swiperParent.swipeTo(3);
 		 }
 	
 	
 	
+	
 	});
-	swiperParent.swipeTo(3);
+	
 	
 	
 }
