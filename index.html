@@ -820,40 +820,6 @@ return false;
 </script> 
 <script>
 jQuery(document).ready(function(){
-    // This button will increment the value
-    $('.qtyplus').click(function(e){
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        fieldName = $(this).attr('field');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If is not undefined
-        if (!isNaN(currentVal)) {
-            // Increment
-            $('input[name='+fieldName+']').val(currentVal + 1);
-        } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(1);
-        }
-    });
-    // This button will decrement the value till 0
-    $(".qtyminus").click(function(e) {
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        fieldName = $(this).attr('field');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If it isn't undefined or its greater than 0
-        if (!isNaN(currentVal) && currentVal > 0) {
-            // Decrement one
-            $('input[name='+fieldName+']').val(currentVal - 1);
-        } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(1);
-        }
-    });
 });
 </script>
 
@@ -1199,7 +1165,7 @@ alert('aall ok');
 $.each(productResponse, function(index, element) {
 
 				outer_menu+='<li class="post post1" ><a href="#" class="post_more"></a><div class="post_right_reveal fontCustom"  >';
-				outer_menu+='<span class="detail" id="postid1"><h4><a href="#">'+element.product_name+'</a></h4>';
+				outer_menu+='<span class="detail" id="postid'+element.product_id+'"><h4><a href="#">'+element.product_name+'</a></h4>';
 				outer_menu+='Cusine :'+element.cuisine_name+'<br />Amount Rs '+element.product_price+' /-';
 				outer_menu+='<div class="clearfix"></div></span></div>';
 				outer_menu+='<div class="post_right_unreveal"><span class="detail" id="postid'+element.product_id+'">'+element.product_name+'<a href="#">added to cart</a> </span>';
