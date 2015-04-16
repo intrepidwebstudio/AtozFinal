@@ -107,7 +107,10 @@ return false;
 });
 $(".swipebox").swipebox();
 });
+
+
 $(function() {
+	
 $('#tabsmenu').tabify();
 $(".videocontainer").fitVids();
 $(".toggle_container").hide();
@@ -127,3 +130,5 @@ $(".post_more").click(function(){
 
 
 });
+
+
