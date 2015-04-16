@@ -122,7 +122,7 @@
                                                 <option>8:30 pm</option>
 -->                                            </select>
                                             <div>&emsp;</div>
-                                      <input type="button" onclick="swiperParent.swipeTo(3);" name="submit" class="form_submit green green_borderbottom"  value="Next" />
+                                      <input type="button" onclick="loadmenulist()" name="submit" class="form_submit green green_borderbottom"  value="Next" />
                                     <center>                      
                                     <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
                                             </form>
@@ -154,25 +154,12 @@
                                         <h2 class="page_title">Menu</h2>
                                                 <div class="toogle_wrap_blog radius8">
                                                     <div class="trigger_blog"><a href="#">Narrow Your Menu</a></div>
-                                                        <div class="toggle_container_blog">
-                                            <ul class="fontCustom">
-                                                <li style="background-color:#CCC !important;width:100%" ><center><label>Cusine</label></center></li>
-                                                <li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li>
-                                                <li style="background-color:#CCC !important;width:100%"><center><label>Category</label></center></li>
-                                                <li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li>
-                                                <li style="background-color:#CCC !important;width:100%"><center><label>Type</label></center> </li>
-                                                <li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>
-                                                <li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li>
-                                                </ul> 
-                                            </div>
-                                        </div>
+                                                        <div class="toggle_container_blog" id="category_cuisine_options">
+                                             
+                                                        </div>
+                                                    </div>
                                         
-                                             <ul class="posts posts1">
+                                             <ul class="posts posts1" id="outer_menu">
                                                 <li class="post post1" >
                                                      <a href="#" class="post_more"></a>                     
                                                      <div class="post_right_reveal fontCustom"  >
@@ -361,69 +348,69 @@
                                                 </div> <!--End of posts archive page-->
                                                 
                                                
-                                                <ul class="post_details_page post_details_page1">
-                                                <li id="postid1">
-                                                <a class="backtoblog radius8">back to Menu</a>
-                                                    <h2 class="post_title">Biriyani</h2>
-                                                    <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
-                                                    <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
-                                                    <h3>Description</h3>
-                                                    <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
-                                                    <!--<h3>Comments</h3>
-                                                        <div class="comment_row">
-                                                            <div class="comm_avatar"><img src="images/avatar.jpg" alt="" title="" border="0" /></div>
-                                                            <div class="comm_content"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in by <a href="#">comment author</a></p></div>
-                                                        </div>
-                                                        <div class="comment_row">
-                                                            <div class="comm_avatar"><img src="images/avatar.jpg" alt="" title="" border="0" /></div>
-                                                            <div class="comm_content"><p>Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta by <a href="#">comment author</a></p></div>
-                                                        </div>
-                                                    <h3>Leave a comment</h3>
-                                                        <div class="form">
-                                                        <form action="#">
-                                                        <label>Name:</label>
-                                                        <input type="text" class="form_input radius4" />
-                                                        <label>Email:</label>
-                                                        <input type="text" class="form_input radius4" />
-                                                        <label>Comment:</label>
-                                                        <textarea class="form_textarea radius4" rows="" cols=""></textarea>
-                                                        
-                                                        <input type="submit" class="form_submit radius4 green green_borderbottom" value="Submit" />
-                                                        </form>
-                                                        </div>-->
-                                                  </li> 
-                                                  <li id="postid2">
-                                                 <a class="backtoblog radius8">back to Menu</a>
-                                                    <h2 class="post_title">Biriyani</h2>
-                                                    <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
-                                                    <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
-                                                    <h3>Description</h3>
-                                                    <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
-                                                  </li>
-                                                  <li id="postid3">
-                                                 <a class="backtoblog radius8">back to Menu</a>
-                                                    <h2 class="post_title">Biriyani</h2>
-                                                    <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
-                                                    <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
-                                                    <h3>Description</h3>
-                                                    <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
-                                                  </li> 
-                                                  <li id="postid4">
-                                                 <a class="backtoblog radius8">back to Menu</a>
-                                                    <h2 class="post_title">Biriyani</h2>
-                                                    <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
-                                                    <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
-                                                    <h3>Description</h3>
-                                                    <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
-                                                  </li>
-                                                  <li id="postid5">
-                                                <a class="backtoblog radius8">back to Menu</a>
-                                                    <h2 class="post_title">Biriyani</h2>
-                                                    <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
-                                                    <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
-                                                    <h3>Description</h3>
-                                                    <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
-                                                  </li>
+                                                <ul class="post_details_page post_details_page1" id="inner_menu">
+	                                                      <li id="postid1">
+                                                        <a class="backtoblog radius8">back to Menu</a>
+                                                            <h2 class="post_title">Biriyani</h2>
+                                                            <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
+                                                            <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
+                                                            <h3>Description</h3>
+                                                            <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
+                                                            <!--<h3>Comments</h3>
+                                                                <div class="comment_row">
+                                                                    <div class="comm_avatar"><img src="images/avatar.jpg" alt="" title="" border="0" /></div>
+                                                                    <div class="comm_content"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in by <a href="#">comment author</a></p></div>
+                                                                </div>
+                                                                <div class="comment_row">
+                                                                    <div class="comm_avatar"><img src="images/avatar.jpg" alt="" title="" border="0" /></div>
+                                                                    <div class="comm_content"><p>Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta by <a href="#">comment author</a></p></div>
+                                                                </div>
+                                                            <h3>Leave a comment</h3>
+                                                                <div class="form">
+                                                                <form action="#">
+                                                                <label>Name:</label>
+                                                                <input type="text" class="form_input radius4" />
+                                                                <label>Email:</label>
+                                                                <input type="text" class="form_input radius4" />
+                                                                <label>Comment:</label>
+                                                                <textarea class="form_textarea radius4" rows="" cols=""></textarea>
+                                                                
+                                                                <input type="submit" class="form_submit radius4 green green_borderbottom" value="Submit" />
+                                                                </form>
+                                                                </div>-->
+                                                          </li> 
+                                                          <li id="postid2">
+                                                         <a class="backtoblog radius8">back to Menu</a>
+                                                            <h2 class="post_title">Biriyani</h2>
+                                                            <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
+                                                            <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
+                                                            <h3>Description</h3>
+                                                            <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
+                                                          </li>
+                                                          <li id="postid3">
+                                                         <a class="backtoblog radius8">back to Menu</a>
+                                                            <h2 class="post_title">Biriyani</h2>
+                                                            <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
+                                                            <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
+                                                            <h3>Description</h3>
+                                                            <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
+                                                          </li> 
+                                                          <li id="postid4">
+                                                         <a class="backtoblog radius8">back to Menu</a>
+                                                            <h2 class="post_title">Biriyani</h2>
+                                                            <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
+                                                            <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
+                                                            <h3>Description</h3>
+                                                            <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
+                                                          </li>
+                                                          <li id="postid5">
+                                                        <a class="backtoblog radius8">back to Menu</a>
+                                                            <h2 class="post_title">Biriyani</h2>
+                                                            <div class="image_single radius4"><img src="images/biriyani.JPG" alt="" title="" border="0" /></div>
+                                                            <div class="image_caption green green_borderbottom radius4">Amount Rs. 200 /-</div>
+                                                            <h3>Description</h3>
+                                                            <p>Basmati rice cooked with chicken mixed with onions , fresh ginger , cashew nut and flavoured with saffron and delicate spices </p>
+                                                          </li>
                                                 </ul>
  										<div class="scrolltop radius20"><a href="#"><img src="images/biriyani.JPG" alt="Go on top" title="Go on top" /></a></div>
                                         </div>
@@ -933,8 +920,8 @@ var branch_id = $('#branchid').val();
 var companycode = $('#companycode').val();
 //alert('90');
 //alert('ajaxpath='+ajaxpath);
-
-if(username !='' && userphone !='')
+alert(' User  Details  = '+username +'====='+ userphone +'====='+ branch_id +'====='+ companycode);
+if(username !='' && userphone !='' && branch_id!='' && companycode!='')
 {
 //alert('91');
 //alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode);
@@ -1024,7 +1011,7 @@ function ErrorCallBack(err){
 
 function loadcompany()
 {
-//	alert('loadcompany 1');
+	alert('loadcompany 1 = = '+ ajaxpath+'loadcompany.php');
 $.support.cors = true;	
 $.ajax({
 url:ajaxpath+'loadcompany.php',
@@ -1035,7 +1022,7 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
-	//	alert('load company success');
+		alert('load company success');
 		var companydetails=data.response;
 		var companyOptions='';
 		var companyData=companydetails.companydata;
@@ -1043,9 +1030,7 @@ success: function(data)
 		companyOptions+='<option value="">Select Company</option>';
 		
 $.each(companyData, function(index, element) {
-	
-//	alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
-	
+	alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
 	companyOptions+='<option value="'+element.companycode+'">'+element.company_name+'</option>';
 	});
 	
@@ -1055,7 +1040,7 @@ $.each(companyData, function(index, element) {
 	},
 error:function(e)
 {
-//	alert("Error =  "+ e.message );
+	alert("Error =  "+ e.message );
 	
 	}	
 		});
@@ -1156,10 +1141,7 @@ alert('inside menu_date');
 		//		alert(JSON.stringify(menuResponse));
 				
 				$.each(menuResponse, function(index, element) {
-						
 						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
-						
-					
 					});
 					
 			//		alert(menuoptions);
@@ -1187,11 +1169,94 @@ alert('inside menu_date');
 
 
 
+function loadmenulist()
+{
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+		 {
+			var menuResponse=data.response;
+			var menuoptions='';
+			alert('data.status.status =' +data.status.status);
+			if(data.status.status=='100')
+			{
+					var outer_menu='';
+					var inner_menu='';
+					
+					var productResponse=data.response;
+
+alert('aall ok');
+
+$.each(productResponse, function(index, element) {
+
+				outer_menu+='<li class="post post1" ><a href="#" class="post_more"></a><div class="post_right_reveal fontCustom"  >';
+				outer_menu+='<span class="detail" id="postid1"><h4><a href="#">'+element.product_name+'</a></h4>';
+				outer_menu+='Cusine :'+element.cuisine_name+'<br />Amount Rs '+element.product_price+' /-';
+				outer_menu+='<div class="clearfix"></div></span></div>';
+				outer_menu+='<div class="post_right_unreveal"><span class="detail" id="postid'+element.product_id+'">'+element.product_name+'<a href="#">added to cart</a> </span>';
+				outer_menu+='<br /><span ><form id="myform" method="POST" action="#">Qty &emsp;<input type="button" value="-" class="qtyminus" field="quantity" />';
+				outer_menu+='<input type="text" name="quantity" value="1" class="qty" /><input type="button" value="+" class="qtyplus" field="quantity" />';
+				outer_menu+='</form>Amount Rs<span id="current_rate"> '+element.product_price+'/-</span>';
+				outer_menu+='</span></div> <div class="post_left"><span>';
+				outer_menu+='<img style="position:relative; width:100%; height:100%;" src="'+imagepath+element.product_image+'" /></span></div></li>';
+				
+				inner_menu+='<li id="postid'+element.product_id+'"><a class="backtoblog radius8">back to Menu</a>';
+				inner_menu+='<h2 class="post_title">'+element.product_name+'</h2>';
+				inner_menu+='<div class="image_single radius4"><img src="'+imagepath+element.product_image+'" alt="" title="" border="0" /></div>';
+				inner_menu+='<div class="image_caption green green_borderbottom radius4">Amount Rs. '+element.product_price+' /-</div>';
+				inner_menu+='<h3>Description</h3><p>'+element.product_description+'</p></li>'; 
+				
+
+			   });
+			   
+			   $('#inner_menu').html('');
+			   $('#inner_menu').html(inner_menu);
+			   
+			   $('#outer_menu').html('');
+			   $('#outer_menu').html(outer_menu);
+			   
+var category_cuisine_options='';
+
+category_cuisine_options+='<ul class="fontCustom"><li style="background-color:#CCC !important;width:100%" ><center><label>Cusine</label></center></li>';
+category_cuisine_options+='<li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li>';
+category_cuisine_options+='<li style="background-color:#CCC !important;width:100%"><center><label>Category</label></center></li>';
+category_cuisine_options+='<li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li>';
+category_cuisine_options+='<li style="background-color:#CCC !important;width:100%"><center><label>Type</label></center> </li>';
+category_cuisine_options+='<li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>';
+category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li></ul>';
+
+$('#category_cuisine_options').html('');
+$('#category_cuisine_options').html(category_cuisine_options);
+
+
+
+			}
+		 }
+	
+	
+	
+	});
+	swiperParent.swipeTo(3);
+	
+	
+}
+
 </script>
+<script>
 
 
-
-
+</script>
 
 
 </body>
