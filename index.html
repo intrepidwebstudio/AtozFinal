@@ -977,7 +977,7 @@ function insertvalues(tx,parameter1,parameter2,parameter3)
 	globalusername = parameter1;
 	globaluserid= parameter2;
 	globaluserphone= parameter3;
-//	alert(parameter1+'===='+parameter2+'===='+parameter3);
+	alert(parameter1+'==userid=='+parameter2+'===='+parameter3);
 	tx.executeSql('INSERT INTO atozuser(username, user_id , phone ) VALUES (?,?,?)',[parameter1,parameter2,parameter3],userinsert);
 	
 	}
@@ -1111,7 +1111,7 @@ $(document).ready(function () {
 function loadmenutime()
 {
 	
-//	alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+	alert(ajaxpath+'loaddeliverytime.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
 	
 if($('#menu_date').val()!='')
 {	
@@ -1172,11 +1172,11 @@ alert('inside menu_date');
 function loadmenulist()
 {
 	
-	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid);
+	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
 	
 	$.support.cors = true;	
 	$.ajax({
-	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid,
+	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
 	type:'POST',
 	contentType: "application/json",
 	async: true,
