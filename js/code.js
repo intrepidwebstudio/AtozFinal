@@ -15,10 +15,8 @@
 		onSlideChangeEnd : function() {
 				//Do something when you touch the slide
 				if (swiperParent.activeIndex != 0){
-				$('#header').animate({'top':'0px'},100);
 				}
 				if (swiperParent.activeIndex == 0){
-				$('#header').animate({'top':'-100px'},100);
 				}  
 				
 		  }
