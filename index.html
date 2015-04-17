@@ -152,11 +152,7 @@
                                         
                                         <div class="posts_archive_page posts_archive_page1">
                                         <h2 class="page_title">Menu</h2>
-                                                <div class="toogle_wrap_blog radius8">
-                                                    <div class="trigger_blog"><a href="#">Narrow Your Menu</a></div>
-                                                        <div class="toggle_container_blog" id="category_cuisine_options">
-                                             
-                                                        </div>
+                                                <div class="toogle_wrap_blog radius8" id="category_cuisine_options" >
                                                     </div>
                                         
                                              <ul class="posts posts1" id="outer_menu">
@@ -986,6 +982,8 @@ $.each(productResponse, function(index, element) {
 			   
 var category_cuisine_options='';
 
+category_cuisine_options+='<div class="trigger_blog"><a href="#">Narrow Your Menu</a></div>';
+category_cuisine_options+='<div class="toggle_container_blog" >';
 category_cuisine_options+='<ul class="fontCustom"><li style="background-color:#CCC !important;width:100%" ><center><label>Cusine</label></center></li>';
 category_cuisine_options+='<li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>';
 category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>';
@@ -998,6 +996,7 @@ category_cuisine_options+='<li style="background-color:#CCC !important;width:100
 category_cuisine_options+='<li><label><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>';
 category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; South Indian</li>';
 category_cuisine_options+='<li><input type="checkbox" name="cusine[]"  />&emsp; Mexican</li></ul>';
+category_cuisine_options+='</div>';
 
 $('#category_cuisine_options').html('');
 $('#category_cuisine_options').html(category_cuisine_options);
