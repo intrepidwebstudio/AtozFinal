@@ -764,6 +764,8 @@ if($('#menu_date').val()!='')
 
 function loadmenulist()
 {
+
+	spinnerplugin.show();
 	
 	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
 alert('ss');
@@ -826,11 +828,17 @@ outer_menu+='</span></p></a></li>';
 				
 				
 			}
+		
+			
 			$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
+		
+		spinnerplugin.hide();	
+			
 		 },
 		 error: function(){
-
-			 alert('Errror connecting to server please try later');
+			 
+		spinnerplugin.hide();	
+		alert('Errror connecting to server please try later');
 			 
 			 }
 	});
@@ -860,21 +868,17 @@ $( document ).on( "pagecreate", "#menulist", function() {
 
 function addtocart(pid)
 {
-	alert('pid = '+pid);
-	alert('has class = '+$('#productselect'+pid).hasClass("unselectedproduct"));
+//	alert('pid = '+pid);
+//	alert('has class = '+$('#productselect'+pid).hasClass("unselectedproduct"));
 	if($('#productselect'+pid).hasClass("unselectedproduct"))
 	{
-		alert('selected');
+//		alert('selected');
 		$('#productselect'+pid).removeClass("unselectedproduct");
 		$('#productselect'+pid).addClass("selectedproduct");
-		
 		$('#productqty'+pid).prop("disabled", false);
 		$('#productqty'+pid).val('1');
-		
-		
 		}else{
-			
-			alert('de-selected');
+//			alert('de-selected');
 		$('#productselect'+pid).removeClass("selectedproduct");
 		$('#productselect'+pid).addClass("unselectedproduct");
 		$('#productqty'+pid).prop("disabled", true);
@@ -883,11 +887,6 @@ function addtocart(pid)
 			}
 	
 	}
-
-
-
-
-
 
 </script>
 
