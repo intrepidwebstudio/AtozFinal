@@ -15,8 +15,10 @@
 		onSlideChangeEnd : function() {
 				//Do something when you touch the slide
 				if (swiperParent.activeIndex != 0){
+				$('#header').show();
 				}
 				if (swiperParent.activeIndex == 0){
+				$('#header').hide();
 				}  
 				
 		  }
@@ -143,16 +145,7 @@ $(function() {
 	
 $('#tabsmenu').tabify();
 $(".videocontainer").fitVids();
-$(".toggle_container").hide();
-$(".toggle_container_blog").hide();
-$(".trigger").click(function(){
-   $(this).toggleClass("active").next().slideToggle("slow");
-	return false;
-});
-$(".trigger_blog").click(function(){
-	$(this).toggleClass("activeb").next().slideToggle("slow");
-	return false;
-});
+
 $(".post_more").click(function(){
 	$(this).toggleClass("activep").next().slideToggle("slow");
 	return false;

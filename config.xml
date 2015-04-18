@@ -54,6 +54,7 @@
 	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" version="1.2.0" />
 	
 	<gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" version="1.1.0" />
+	<gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
 	
 	
     <gap:plugin name="org.apache.cordova.battery-status" />
