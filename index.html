@@ -107,6 +107,14 @@ padding-right:5px !important;
 	 
 	 font-size:18px !important ;
 	 }
+	 
+.unselectedproduct{
+	background-color:#CCC;
+	}
+.selectedproduct{
+	background-color:#0F6;
+	}	
+	 
 			
 </style>
 </head>
@@ -569,7 +577,7 @@ function userinsert()
 {
 		//swiperParent.swipeTo(2);
 		
-	$.mobile.changePage('#placeorder',{ transition:'slide' });
+	$.mobile.changePage('#placeorder',{ transition:'slide' ,reverse:true });
 	
 	}
 	
@@ -783,7 +791,7 @@ alert('ss');
 
 $.each(productResponse, function(index, element) {
 
-outer_menu+='<li><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
+outer_menu+='<li class="'+element.cuisine_name+' '+element.category_name+'  '+element.food_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
 outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
 outer_menu+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+'<br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. ';
 
@@ -794,9 +802,9 @@ outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</
 outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>';	
 	}
 outer_menu+='</span><span style="width:20% !important; float:right !important;">';
-outer_menu+='<span style="position:relative; top:0px; width:100%; background-color:#CCC; opacity:0.4;">';
+outer_menu+='<span class="unselectedproduct" style="position:relative; top:0px; width:100%; opacity:0.4;" id="productselect'+element.product_id+'" onclick=addtocart(\''+element.product_id+'\') >';
 outer_menu+='<img src="images/order.jpg" style="width:100%; max-width:50px" /></span>';
-outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;"><input disabled  type="text" style="width:30px" placeholder="Qty" /></span></span>';
+outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input disabled id="productqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></span></span>';
 outer_menu+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 if(element.food_type=='veg')
 {
@@ -815,7 +823,6 @@ outer_menu+='</span></p></a></li>';
 				alert('all ok2');
 			//	$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
 				alert('all ok4');
-				
 				
 				
 			}
@@ -845,6 +852,35 @@ $( document ).on( "pagecreate", "#menulist", function() {
         }
     });
 });
+
+
+
+
+
+
+function addtocart(pid)
+{
+	if($('#productselect'+pid).hasClass("unselectedproduct"))
+	{
+		$('#productselect'+pid).removeClass("unselectedproduct");
+		$('#productselect'+pid).addClass("selectedproduct");
+		
+		$('#productqty'+pid).prop("disabled", false);
+		
+		}else{
+			
+		$('#productselect'+pid).removeClass("selectedproduct");
+		$('#productselect'+pid).addClass("unselectedproduct");
+		$('#productqty'+pid).prop("disabled", true);
+
+			}
+	
+	}
+
+
+
+
+
 
 </script>
 
