@@ -812,9 +812,14 @@ outer_menu+='</span></p></a></li>';
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
 				$('#menulistitems').listview().listview('refresh');
+				alert('all ok2');
 				$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
+				alert('all ok4');
+				
+				
+				
 			}
-
+			$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
 		 },
 		 error: function(){
 
