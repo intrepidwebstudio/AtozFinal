@@ -765,8 +765,8 @@ if($('#menu_date').val()!='')
 function loadmenulist()
 {
 	spinnerplugin.show({
-		overlay: false,    // defaults to true
-		timeout: 5,       // defaults to 0 (no timeout)
+		overlay: true,    // defaults to true
+		timeout: 3,       // defaults to 0 (no timeout)
 		fullscreen: true,  // defaults to false
 	});
 	
@@ -799,7 +799,6 @@ $.each(productResponse, function(index, element) {
 outer_menu+='<li class="'+element.cuisine_name+' '+element.category_name+'  '+element.food_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
 outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
 outer_menu+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+'<br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. ';
-
 if(element.discount_percentage!=0)
 {
 outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
@@ -819,14 +818,13 @@ outer_menu+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />';
 	}
 outer_menu+='</span></p></a></li>';    
 			   });
-			   
-		//	   alert(outer_menu);
-
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
 				$('#menulistitems').listview().listview('refresh');
 		///		alert('all ok2');
 				$('#menulist').trigger("create");
+				
+				$('#menulist').enhanceWithin();
 			//	$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
 		//		alert('all ok4');
 				
