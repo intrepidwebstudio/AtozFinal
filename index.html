@@ -211,16 +211,16 @@ padding-right:5px !important;
                             <label>Date:</label>
                             <input type="date" name="menu_date" id="menu_date" onchange="loadmenutime()" value="" class="form_input required" />
                             <label>Time:</label>
-                            <select  data-icon="false"  data-shadow="false" type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%; border:1px #85af5d solid !important; background-color:#039 !important" >
+                            <select  data-icon="false"  data-shadow="false" type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%; border:1px #85af5d solid !important; " >
                             <!---
                             <option>12:15 pm</option>
                             <option>1:45 pm</option>
                             <option>7:30 pm</option>
                             <option>8:30 pm</option>
                             --->
+                            
                             </select>
                             
-                            <div>&emsp;</div>
                             <button type="button" onclick="loadmenulist()" name="submit" class="form_submit green green_borderbottom" >
                             Next
                             </button>
@@ -727,14 +727,13 @@ if($('#menu_date').val()!='')
 			if(data.status.status=='100')
 			{
 	//			alert('status =100');
-				
 		//		alert(JSON.stringify(menuResponse));
 				
 				$.each(menuResponse, function(index, element) {
 						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
 					});
 					
-			//		alert(menuoptions);
+					alert(menuoptions);
 					$('#delivery_time').html('');
 					$('#delivery_time').append(menuoptions);
 				
@@ -763,7 +762,7 @@ function loadmenulist()
 {
 	
 	//alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
-spinnerplugin.show();
+
 	$.support.cors = true;	
 	$.ajax({
 	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
@@ -817,10 +816,10 @@ outer_menu+='</span></p></a></li>';
 				$('#menulistitems').listview().listview('refresh');
 				$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
 			}
-			spinnerplugin.hide();
+
 		 },
 		 error: function(){
-			 spinnerplugin.hide();
+
 			 alert('Errror connecting to server please try later');
 			 
 			 }
