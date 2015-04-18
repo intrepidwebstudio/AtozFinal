@@ -261,14 +261,14 @@ padding-right:5px !important;
         <div id="menuscroll" class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="menulistitems" >
                 
-<!--<li><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
+<!---<li><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
 <p class="customLineheight" style="width:100% !important; ">
 <span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
-</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%; background-color:#0F0">
+</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%; background-color:#0F0" onclick=addtocart('element.product_id')>
 <img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="Qty" /></span></span>
 <span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
-</span></p></a></li>    
--->                
+</span></p></a></li>    --->
+                
             </ul>
 
 		</div>
@@ -860,8 +860,11 @@ $( document ).on( "pagecreate", "#menulist", function() {
 
 function addtocart(pid)
 {
+	alert('pid = '+pid);
+	alert('has class = '+$('#productselect'+pid).hasClass("unselectedproduct"));
 	if($('#productselect'+pid).hasClass("unselectedproduct"))
 	{
+		alert('selected');
 		$('#productselect'+pid).removeClass("unselectedproduct");
 		$('#productselect'+pid).addClass("selectedproduct");
 		
@@ -869,6 +872,7 @@ function addtocart(pid)
 		
 		}else{
 			
+			alert('de-selected');
 		$('#productselect'+pid).removeClass("selectedproduct");
 		$('#productselect'+pid).addClass("unselectedproduct");
 		$('#productqty'+pid).prop("disabled", true);
