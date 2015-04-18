@@ -109,10 +109,10 @@ padding-right:5px !important;
 	 }
 	 
 .unselectedproduct{
-	background-color:#CCC;
+	opacity:0.3;
 	}
 .selectedproduct{
-	background-color:#0F6;
+	opacity:1;
 	}	
 	 
 			
@@ -261,13 +261,13 @@ padding-right:5px !important;
         <div id="menuscroll" class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="menulistitems" >
                 
-<!---<li><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
+<li><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
 <p class="customLineheight" style="width:100% !important; ">
 <span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
-</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%; background-color:#0F0" onclick=addtocart('element.product_id')>
+</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
 <img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="Qty" /></span></span>
 <span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
-</span></p></a></li>    --->
+</span></p></a></li>  
                 
             </ul>
 
@@ -802,8 +802,8 @@ outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</
 outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>';	
 	}
 outer_menu+='</span><span style="width:20% !important; float:right !important;">';
-outer_menu+='<span class="unselectedproduct" style="position:relative; top:0px; width:100%; opacity:0.4;" id="productselect'+element.product_id+'" onclick=addtocart(\''+element.product_id+'\') >';
-outer_menu+='<img src="images/order.jpg" style="width:100%; max-width:50px" /></span>';
+outer_menu+='<span  style="position:relative; top:0px; width:100%;"  onclick=addtocart(\''+element.product_id+'\') >';
+outer_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselect'+element.product_id+'" style="width:100%; max-width:50px" /></span>';
 outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input disabled id="productqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></span></span>';
 outer_menu+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 if(element.food_type=='veg')
@@ -869,6 +869,8 @@ function addtocart(pid)
 		$('#productselect'+pid).addClass("selectedproduct");
 		
 		$('#productqty'+pid).prop("disabled", false);
+		$('#productqty'+pid).val('1');
+		
 		
 		}else{
 			
@@ -876,6 +878,7 @@ function addtocart(pid)
 		$('#productselect'+pid).removeClass("selectedproduct");
 		$('#productselect'+pid).addClass("unselectedproduct");
 		$('#productqty'+pid).prop("disabled", true);
+		$('#productqty'+pid).val('');
 
 			}
 	
