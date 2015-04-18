@@ -247,7 +247,7 @@ padding-right:5px !important;
                 		<a href="#"><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
-                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >    	<img src="images/icons/menu.png" alt="" title="" />
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
                         </a>
                 	</div>
                     <div class="page_title"  >
@@ -770,8 +770,8 @@ function loadmenulist()
 		fullscreen: true,  // defaults to false
 	});
 	
-	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
-alert('ss');
+//	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
+//alert('ss');
 	$.support.cors = true;	
 	$.ajax({
 	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
@@ -784,7 +784,7 @@ alert('ss');
 		 {
 			var menuResponse=data.response;
 			var menuoptions='';
-			alert('data.status.status =' +data.status.status);
+	//		alert('data.status.status =' +data.status.status);
 			if(data.status.status=='100')
 			{
 					var outer_menu='';
@@ -820,21 +820,22 @@ outer_menu+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />';
 outer_menu+='</span></p></a></li>';    
 			   });
 			   
-			   alert(outer_menu);
+		//	   alert(outer_menu);
 
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
 				$('#menulistitems').listview().listview('refresh');
-				alert('all ok2');
+		///		alert('all ok2');
+				$('#menulist').trigger("create");
 			//	$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
-				alert('all ok4');
+		//		alert('all ok4');
 				
 				
 			}
 		
-			spinnerplugin.show();
+		//spinnerplugin.hide();		
 				$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
-			spinnerplugin.hide();	
+			
 			
 		 },
 		 error: function(){
