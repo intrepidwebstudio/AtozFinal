@@ -221,7 +221,7 @@ padding-right:5px !important;
                             <label>Time:</label>
                             
                             <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" onchange="loadbranch()" style="width:100%;" >
-                            <option>Select company</option>
+                            <option>Select delivery time</option>
                             </select>
                             
                             
@@ -764,8 +764,11 @@ if($('#menu_date').val()!='')
 
 function loadmenulist()
 {
-
-	spinnerplugin.show();
+	spinnerplugin.show({
+		overlay: false,    // defaults to true
+		timeout: 5,       // defaults to 0 (no timeout)
+		fullscreen: true,  // defaults to false
+	});
 	
 	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
 alert('ss');
@@ -829,10 +832,9 @@ outer_menu+='</span></p></a></li>';
 				
 			}
 		
-			
-			$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
-		
-		spinnerplugin.hide();	
+			spinnerplugin.show();
+				$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
+			spinnerplugin.hide();	
 			
 		 },
 		 error: function(){
