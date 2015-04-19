@@ -768,14 +768,14 @@ var classcategory_name=element.category_name;
 var classfood_type=element.food_type;
 	classfood_type=classfood_type.replace(" ",""); 
 	
-	if(jQuery.inArray(classcategory_name,category_array)==-1)
-	{ category_array.push(classcategory_name); }
+	if(jQuery.inArray(element.category_name,category_array)==-1)
+	{ category_array.push(element.category_name); }
 	
-	if(jQuery.inArray(classcuisine_name,cuisine_array)==-1)
-	{ cuisine_array.push(classcuisine_name); }
+	if(jQuery.inArray(element.cuisine_name,cuisine_array)==-1)
+	{ cuisine_array.push(element.cuisine_name); }
 
-	if(jQuery.inArray(classfood_type,food_type_array)==-1)
-	{ food_type_array.push(classfood_type); }
+	if(jQuery.inArray(element.food_type,food_type_array)==-1)
+	{ food_type_array.push(element.food_type); }
 
 outer_menu+='<li class="'+classcuisine_name+' '+classcategory_name+'  '+classfood_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
 outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
@@ -815,17 +815,26 @@ filtermenu+='<ul class="fontCustom filterlist" style="text-decoration:none; list
 filtermenu+='<li class="filterTitle" ><center><label>Cusine</label></center></li>';
 for(var i=0; i<cuisine_array.length;i++)
 {
-filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+cuisine_array[i]+'" name="cusine[]"  />&emsp; '+cuisine_array[i]+'</label></li>';
+var classcuisine_name=cuisine_array[i];
+	classcuisine_name=classcuisine_name.replace(" ",""); 
+	
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classcuisine_name+'" name="cusine[]"  />&emsp; '+cuisine_array[i]+'</label></li>';
 }
 filtermenu+='<li class="filterTitle"><center><label>Category</label></center></li>';
 for(var i=0; i<category_array.length;i++)
 {
-filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+category_array[i]+'" name="category[]"  />&emsp; '+category_array[i]+'</label></li>';
+var classcategory_name=category_array[i];
+	classcategory_name=classcategory_name.replace(" ",""); 
+
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classcategory_name+'" name="category[]"  />&emsp; '+category_array[i]+'</label></li>';
 }
 filtermenu+='<li class="filterTitle"><center><label>Type</label></center></li>';
 for(var i=0; i<food_type_array.length;i++)
 {
-filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+food_type_array[i]+'" name="cusine[]"  />&emsp; '+food_type_array[i]+'</label></li>';
+	var classfood_type=food_type_array[i];
+	classfood_type=classfood_type.replace(" ",""); 
+
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+classfood_type+'" name="cusine[]"  />&emsp; '+food_type_array[i]+'</label></li>';
 }
 filtermenu+='</ul>';
 				
