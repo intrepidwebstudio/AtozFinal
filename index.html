@@ -488,12 +488,12 @@ function querySuccess(tx,result){
 
 				
 				}
-				$.mobile.changePage('#placeorder',{ transition:'slide' , reverse:true });   // Select date and time	
+				$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
 				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
 			}//if close
 			else{
 				//alert('8');
-				$.mobile.changePage('#registration',{ transition:'slide' , reverse:true });
+				$.mobile.changePage('#registration',{ transition:'slide'  });
 
 			}
 }
@@ -577,29 +577,15 @@ function userinsert()
 {
 		//swiperParent.swipeTo(2);
 		
-	$.mobile.changePage('#placeorder',{ transition:'slide' ,reverse:true });
+	$.mobile.changePage('#placeorder',{ transition:'slide'  });
 	
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	function alertCallback(){
+function alertCallback(){
 }
 function ErrorCallBack(err){
 }
-
-
-
-
-
-
 
 
 
@@ -829,7 +815,7 @@ outer_menu+='</span></p></a></li>';
 			}
 		
 		//spinnerplugin.hide();		
-				$.mobile.changePage('#menulist',{ transition:'slide' , reverse:true })
+				$.mobile.changePage('#menulist',{ transition:'slide'  })
 			
 			
 		 },
