@@ -842,6 +842,22 @@ filtermenu+='</ul>';
 				$('#filtermenu').html('');
 				$('#filtermenu').html(filtermenu);
 				
+
+
+$('#filtermenu input:checkbox').on('click',function(){
+	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
+		if(jQuery('#filtermenu input[type=checkbox]:checked').length) { 
+				$('.showAll').hide();
+				$('.'+$(this).val()).hide();
+		}else{
+				alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
+			$('.showAll').show();
+			}
+		
+		
+		
+	});
+
 				
 		///		alert('all ok2');
 				//$('#menulist').trigger("create");
@@ -911,21 +927,6 @@ function addtocart(pid)
 	
 	}
 
-$('#filtermenu input:checkbox').on('click',function(){
-	
-	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
-	
-		if(jQuery('#filtermenu input[type=checkbox]:checked').length) { 
-				$('.showAll').hide();
-				$('.'+$(this).val()).hide();
-		}else{
-				alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
-			$('.showAll').show();
-			}
-		
-		
-		
-	});
 
 
 
