@@ -777,7 +777,7 @@ var classfood_type=element.food_type;
 	if(jQuery.inArray(classfood_type,food_type_array)==-1)
 	{ food_type_array.push(classfood_type); }
 
-outer_menu+='<li class="'+element.cuisine_name+' '+element.category_name+'  '+element.food_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
+outer_menu+='<li class="'+classcuisine_name+' '+classcategory_name+'  '+classfood_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
 outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
 outer_menu+='<span style="width:80% !important ;float:left !important;">'+element.product_name+'<br />cusine name: '+element.cuisine_name+'<br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. ';
 
@@ -802,13 +802,11 @@ outer_menu+='</span></p></a></li>';
 			   });
 			   
 			   
-		//	   alert(outer_menu);
+		   alert(outer_menu);
 
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
 				$('#menulistitems').listview().listview('refresh');
-				
-				
 				
 				
 var filtermenu='';
@@ -822,7 +820,7 @@ filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+
 filtermenu+='<li class="filterTitle"><center><label>Category</label></center></li>';
 for(var i=0; i<category_array.length;i++)
 {
-filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+category_array[i]+'" name="category[]"  />&emsp; '+category_array.length+'</label></li>';
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+category_array[i]+'" name="category[]"  />&emsp; '+category_array[i]+'</label></li>';
 }
 filtermenu+='<li class="filterTitle"><center><label>Type</label></center></li>';
 for(var i=0; i<food_type_array.length;i++)
@@ -831,6 +829,7 @@ filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+
 }
 filtermenu+='</ul>';
 				
+				alert('filter menu = '+filtermenu);
 				$('#filtermenu').html('');
 				$('#filtermenu').html(filtermenu);
 				
@@ -911,7 +910,7 @@ $('#filtermenu input:checkbox').on('click',function(){
 				$('.showAll').hide();
 				$('.'+$(this).val()).hide();
 		}else{
-			//alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
+				alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
 			$('.showAll').show();
 			}
 		
