@@ -278,21 +278,7 @@ padding-right:5px !important;
     
     <div data-role="panel" id="right-panel" data-display="push" data-position="right" style="background-color:#CCC !important; padding-left:1px;" >
     	<a href="#"><h4>Narrow Your Menu</h4></a>
-    <div class="toggle_container_blog" style="display:block !important" >
-      <ul class="fontCustom filterlist" style="text-decoration:none; list-style:none !important; padding-left:0px !important; margin-left:0px !important; ">
-        <li class="filterTitle" ><center><label>Cusine</label></center></li>
-        <li><label  class="CustomFontsize"  ><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; South Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; Mexican</label></li>
-        <li class="filterTitle"><center><label>Category</label></center></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; South Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; Mexican</label></li>
-        <li class="filterTitle"><center><label>Type</label></center> </li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  /> &emsp; North Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; South Indian</label></li>
-        <li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; Mexican</label></li>
-      </ul>
+    <div class="toggle_container_blog" id="filtermenu" style="display:block !important" >
     </div>
                 
                 
@@ -587,8 +573,6 @@ function alertCallback(){
 function ErrorCallBack(err){
 }
 
-
-
 function loadcompany()
 {
 	//alert('loadcompany 1 = = '+ ajaxpath+'loadcompany.php');
@@ -707,18 +691,12 @@ if($('#menu_date').val()!='')
 	crossDomain: true,
 	success: function(data)
 		 {
-			//var status = data.status;
-
 			var menuResponse=data.response;
-//			var Status=data.status;
 			var menuoptions='';
 			
 			//alert('data.status.status =' +data.status.status);
 			if(data.status.status=='100')
 			{
-	//			alert('status =100');
-		//		alert(JSON.stringify(menuResponse));
-				
 				$.each(menuResponse, function(index, element) {
 						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
 					});
@@ -775,7 +753,24 @@ function loadmenulist()
 
 //alert('aall ok');
 
+var cuisine_array=[];
+var category_array=[];
+var food_type_array=[];
+
+
+
 $.each(productResponse, function(index, element) {
+	
+	if(jQuery.inArray(element.category_name,category_array)==-1)
+	{ category_array.push(element.category_name); }
+	
+	if(jQuery.inArray(element.cuisine_name_name,cuisine_array)==-1)
+	{ cuisine_array.push(element.cuisine_name); }
+	
+
+	if(jQuery.inArray(element.food_type,food_type_array)==-1)
+	{ food_type_array.push(element.food_type); }
+
 
 outer_menu+='<li class="'+element.cuisine_name+' '+element.category_name+'  '+element.food_type+' showAll" id="product'+element.product_id+'" ><a href=""><img src="'+imagepath+element.product_image+'" style="vertical-align:middle; width:100% !important; height:100% !important;" />';
 outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
@@ -801,11 +796,40 @@ outer_menu+='<img src="images/nonveg.jpg" style="max-width:30px;top:10px;" />';
 outer_menu+='</span></p></a></li>';    
 			   });
 			   
+			   
 		//	   alert(outer_menu);
 
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
 				$('#menulistitems').listview().listview('refresh');
+				
+				
+				
+				
+var filtermenu='';
+filtermenu+='<ul class="fontCustom filterlist" style="text-decoration:none; list-style:none !important; padding-left:0px !important; margin-left:0px !important; ">';
+
+filtermenu+='<li class="filterTitle" ><center><label>Cusine</label></center></li>';
+for(var i=0; i<cuisine_array.length;i++)
+{
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; '+cuisine_array[i]+'</label></li>';
+}
+filtermenu+='<li class="filterTitle"><center><label>Category</label></center></li>';
+for(var i=0; i<category_array.length;i++)
+{
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" name="category[]"  />&emsp; '+category_array.length+'</label></li>';
+}
+filtermenu+='<li class="filterTitle"><center><label>Type</label></center></li>';
+for(var i=0; i<food_type_array.length;i++)
+{
+filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" name="cusine[]"  />&emsp; '+food_type_array[i]+'</label></li>';
+}
+filtermenu+='</ul>';
+				
+				$('#filtermenu').html('');
+				$('#filtermenu').html(filtermenu);
+				
+				
 		///		alert('all ok2');
 				//$('#menulist').trigger("create");
 			//	$("#menuscroll").iscrollview("scrollTo", 0, 0, 0, false);				
@@ -871,6 +895,11 @@ function addtocart(pid)
 			}
 	
 	}
+
+
+
+
+
 
 </script>
 
