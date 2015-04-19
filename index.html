@@ -274,6 +274,14 @@ padding-right:5px !important;
 		</div>
     </div><!-- /content -->
     
+    <div data-role="footer">
+             <div id="header" style="display:block; ">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important"> View Cart</h2></center>
+                    </div>
+             </div>
+    </div>
+    
     
     
     <div data-role="panel" id="right-panel" data-display="push" data-position="right" style="background-color:#CCC !important; padding-left:1px;" >
@@ -846,9 +854,11 @@ filtermenu+='</ul>';
 
 $('#filtermenu input:checkbox').on('click',function(){
 	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
+	
+	
 		if(jQuery('#filtermenu input[type=checkbox]:checked').length) { 
 				$('.showAll').hide();
-				$('.'+$(this).val()).hide();
+				$('.'+$(this).val()).show();
 		}else{
 				alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
 			$('.showAll').show();
