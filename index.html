@@ -890,7 +890,7 @@ outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>'
 outer_menu+='</span><span style="width:20% !important; float:right !important;">';
 outer_menu+='<span  style="position:relative; top:0px; width:100%;"  onclick=addtocart(\''+element.product_id+'\') >';
 outer_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselect'+element.product_id+'" style="width:100%; max-width:50px" /></span>';
-outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input class="productquantity" onblur=resetqty(\'productqty'+element.product_id+'\',\''+element.product_id+'\') disabled id="productqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></span></span>';
+outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input class="productquantity" onblur=resetqty(\'productqty'+element.product_id+'\',\''+element.product_id+'\') disabled id="productqty'+element.product_id+'"  type="number" style="width:30px" placeholder="Qty" /></span></span>';
 outer_menu+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 if(element.food_type=='veg')
 {
