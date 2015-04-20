@@ -143,7 +143,7 @@ padding-right:5px !important;
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
                 		<a href="#" onclick="swiperParent.swipeTo(9);">
@@ -160,7 +160,7 @@ padding-right:5px !important;
     <!--content--->
     <div data-role="content">
         <div class="example-wrapper" data-iscroll>            
-            <h2 id="Note"></h2>
+            
                 <div class="form">
                     <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
                             <label>Name:</label>
@@ -196,7 +196,7 @@ padding-right:5px !important;
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                     
                     
@@ -243,7 +243,7 @@ padding-right:5px !important;
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
                 		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
@@ -301,7 +301,7 @@ padding-right:5px !important;
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
                 		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
@@ -355,7 +355,7 @@ padding-right:5px !important;
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
                 		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
@@ -387,12 +387,12 @@ padding-right:5px !important;
 </div>
         
   
- <div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
-                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
                 	<div class="gomenu radius20">
                 		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
@@ -407,22 +407,67 @@ padding-right:5px !important;
 	    <div role="main" class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="settingsmenu" >
-                   <li>My Account</li> 
-                   <li>Privacy Policy</li>
-                   <li>Terms and Conditions</li>
-                   <li>Feedback</li>
-                   <li>Support</li>
+                   <li><a href="#myaccount"  data-transition="slide">My Account</a></li> 
+                   <li><a href="#"  data-transition="slide">Privacy Policy</a></li>
+                   <li><a href="#"  data-transition="slide">Terms and Conditions</a></li>
+                   <li><a href="#"  data-transition="slide">Feedback</a></li>
+                   <li><a href="#"  data-transition="slide">Support</a></li>
             </ul>
 
 		</div>
     </div><!-- /content -->
-    	<div data-role="footer">
-             <div id="header" style="display:block; ">
+    	
+</div>
+
+
+<div data-role="page" id="myaccount" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Checkout</h2></center>
+                        <center><h2 style="clear:none !important">Settings</h2></center>
                     </div>
              </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content">
+        <div class="example-wrapper" data-iscroll>            
+            
+                <div class="form">
+                    <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
+                            <label>Name:</label>
+                            <input type="text" name="username" id="usernameEdit" value="" class="form_input required fontCustom" />
+                            <label>Mobile Number:</label>
+                            <input type="tel" name="userphone" id="userphoneEdit" value="" class="form_input required fontCustom" />
+                            <label>Company Name:</label>
+                            <select type="text" name="companycode" id="companycodeEdit" onchange="loadbranch()" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select company</option>
+                            </select>
+                            <label>Company Location:</label>
+                            <select type="text" name="branchid" id="branchidEdit" class="form_input fontCustom" style="width:100%;" >
+                            <option>Select Location</option>
+                            </select>
+                            <div>&emsp;</div>
+                            <button type="button" onclick="update_user()" name="submit" class="form_submit green green_borderbottom" >
+                            Update
+                            </button>
+                            <center>                      
+                            <label id="loader" style="display:none;"><img src="images/loader.gif" alt="Loading..." id="LoadingGraphic" /></label></center>
+                    </form>
+                </div>
+			<div class="clearfix"></div>
+          </div>  
+        
     </div>
+
+    	
 </div> 
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
@@ -603,6 +648,10 @@ function querySuccess(tx,result){
 				globalusername = username;
 				globaluserid= user_id1;
 				globaluserphone= phone;
+				
+				$('#usernameEdit').val(globalusername);
+				$('#userphoneEdit').val(globaluserphone);
+				
 
 				
 				}
@@ -961,7 +1010,7 @@ inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  
  		   });
 			   
 			   
-		   alert(inner_menu);
+		//   alert(inner_menu);
 
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
@@ -1000,20 +1049,20 @@ filtermenu+='<li><label class="CustomFontsize" ><input type="checkbox" value="'+
 }
 filtermenu+='</ul>';
 				
-				alert('filter menu = '+filtermenu);
+			//	alert('filter menu = '+filtermenu);
 				$('#filtermenu').html('');
 				$('#filtermenu').html(filtermenu);
 				
 
 $('#filtermenu input:checkbox').on('click',function(){
-	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
+//	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
 	
 	
 		if(jQuery('#filtermenu input[type=checkbox]:checked').length) { 
 				$('.showAll').hide();
 				$('.'+$(this).val()).show();
 		}else{
-				alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
+			//	alert('no count = '+ jQuery('#filtermenu input[type=checkbox]:checked').length);
 			$('.showAll').show();
 			}
 		
@@ -1038,7 +1087,7 @@ $('#filtermenu input:checkbox').on('click',function(){
 		 error: function(){
 			 
 		spinnerplugin.hide();	
-		alert('Errror connecting to server please try later');
+	//	alert('Errror connecting to server please try later');
 			 
 			 }
 	});
@@ -1147,7 +1196,7 @@ function gotocart()
 
 				}
 
-alert("final cart = "+ JSON.stringify(final_cartjsonObj));	
+//alert("final cart = "+ JSON.stringify(final_cartjsonObj));	
 
 viewCartList();
 	
@@ -1164,7 +1213,7 @@ $.each(globalmenuObj, function(index, element) {
 	var TotalQuantity =	this.product_qty;	
 	var	productTotal = (TotalQuantity) * (element.product_price);
 		
-        alert("found:  " + JSON.stringify(this));
+      //  alert("found:  " + JSON.stringify(this));
   
 cartlist+='<li><a ><img src="'+imagepath+element.product_image+'"  /><p>';
 cartlist+='<span style="float:left; width:70% !important;  line-height:25px !important;" onclick=viewproductdescription(\''+element.product_id+'\')>';
@@ -1193,7 +1242,7 @@ cartlist+='</span></span></p></a></li>';
 
 			});
 			
-			alert(cartlist);
+//			alert(cartlist);
 				$('#viewcartitems').empty().append(cartlist);
 				$('#viewcartitems').trigger("create");
 				$('#viewcartitems').listview().listview('refresh');
