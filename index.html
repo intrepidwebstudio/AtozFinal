@@ -928,7 +928,7 @@ inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  
  		   });
 			   
 			   
-		   alert(outer_menu);
+		   alert(inner_menu);
 
 				$('#menulistitems').empty().append(outer_menu);
 				$('#menulistitems').trigger("create");
@@ -1088,6 +1088,8 @@ function resetqty(qtyid , pid)
 		var qty = $('#'+qtyid).val();
 		$('#productqty'+pid).val(qty);
 		$('#productdescriptionqty'+pid).val(qty);
+		$('#productcartqty'+pid).val(qty);
+				
 	}
 
 
@@ -1121,9 +1123,8 @@ $.each(globalmenuObj, function(index, element) {
 	
 	$(final_cartjsonObj).each(function() {
     if (this.product_id == element.product_id) {
-		
-	var	productTotal = (this.product_qty) * (element.product_price);
-		
+	var TotalQuantity =	this.product_qty;	
+	var	productTotal = (TotalQuantity) * (element.product_price);
 		
         alert("found:  " + JSON.stringify(this));
   
@@ -1144,7 +1145,7 @@ cartlist+='Rs &emsp;<span  class="strikethrough amountfont">'+element.product_pr
 cartlist+='Rs &emsp;<span class=" amountfont">'+element.product_price+'</span>';	
 	}
 cartlist+='</span><span style="float:right; width:30% !important; line-height:25px;" >';
-cartlist+='<input type="text"  /><span class="amountfont" id="productTotal'+element.product_id+'" >'+productTotal+'</span><br />';
+cartlist+='<input class="productquantity" onblur=resetqty(\'productcartqty'+element.product_id+'\',\''+element.product_id+'\')  id="productcartqty'+element.product_id+'"  type="text" placeholder="Qty"  value="'+TotalQuantity+'"  /><span class="amountfont">Rs <span id="productTotal'+element.product_id+'" >'+productTotal+'</span></span><br />';
 cartlist+='<span data-role="button" style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF" onclick=removeProduct(\''+element.product_id+'\')><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />';
 cartlist+='</span></span></p></a></li>';
 
