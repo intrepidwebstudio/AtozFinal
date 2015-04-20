@@ -387,7 +387,43 @@ padding-right:5px !important;
 </div>
         
   
-  
+ <div data-role="page" id="settings" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home"><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Settings</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+	    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" data-icon="false"  id="settingsmenu" >
+                   <li>My Account</li> 
+                   <li>Privacy Policy</li>
+                   <li>Terms and Conditions</li>
+                   <li>Feedback</li>
+                   <li>Support</li>
+            </ul>
+
+		</div>
+    </div><!-- /content -->
+    	<div data-role="footer">
+             <div id="header" style="display:block; ">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Checkout</h2></center>
+                    </div>
+             </div>
+    </div>
+</div> 
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
@@ -1176,8 +1212,7 @@ cartlist+='</span></span></p></a></li>';
 	
 function removeProduct(pid)
 { 
-alert('hh' + pid);
-   $.each(final_cartjsonObj, function(index, result) {
+/*   $.each(final_cartjsonObj, function(index, result) {
 	   
 	   alert("result[product_id] ="+ result[product_id] );
 	   
@@ -1187,8 +1222,9 @@ alert('hh' + pid);
           final_cartjsonObj.splice(index, 1);
       }    
    });
+   */
+   
     addtocart(pid);
-	alert(JSON.stringify(final_cartjsonObj))
 	gotocart();
 }
 	
