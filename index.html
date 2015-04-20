@@ -1179,10 +1179,14 @@ cartlist+='</span></span></p></a></li>';
 	
 function removeProduct(pid)
 { 
-alert('hh');
+alert('hh' + pid);
    $.each(final_cartjsonObj, function(index, result) {
+	   
+	   alert("result[product_id] ="+ result[product_id] );
+	   
       if(result[product_id] == pid) {
           //Remove from array
+		  alert(result[product_id]);
           final_cartjsonObj.splice(index, 1);
       }    
    });
