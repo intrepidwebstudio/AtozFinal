@@ -1122,6 +1122,9 @@ $.each(globalmenuObj, function(index, element) {
 	$(final_cartjsonObj).each(function() {
     if (this.product_id == element.product_id) {
 		
+	var	productTotal = (this.product_qty) * (element.product_price);
+		
+		
         alert("found:  " + JSON.stringify(this));
   
 cartlist+='<li><a ><img src="'+imagepath+element.product_image+'"  /><p>';
@@ -1151,6 +1154,7 @@ cartlist+='</span></span></p></a></li>';
 
 			});
 			
+			alert(cartlist);
 				$('#viewcartitems').empty().append(cartlist);
 				$('#viewcartitems').trigger("create");
 				$('#viewcartitems').listview().listview('refresh');
