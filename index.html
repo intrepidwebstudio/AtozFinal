@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />-->
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -238,8 +239,6 @@ padding-right:5px !important;
 </div>    
 
 <div data-role="page" id="menulist" class="fontCustom"  data-title="Atoz Restaurent"  >
-
-
         <!-- /header -->
         <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
@@ -256,18 +255,18 @@ padding-right:5px !important;
              </div>
         </div>
         <!-- /header -->
-
     <div role="main" class="ui-content menu_content">
         <div id="menuscroll" class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="menulistitems" >
-                
 <li class="showAll northindian "><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
 <p class="customLineheight" style="width:100% !important; ">
 <span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
-</span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
 <img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="Qty" /></span></span>
 <span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
-</span></p></a></li> 
+</span></p></a></li>
                 
             </ul>
 
@@ -297,6 +296,107 @@ padding-right:5px !important;
 </div>
 
 
+<div data-role="page" id="viewcart" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#"><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Cart</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" data-icon="false"  id="viewcartitems" >
+                        <!-- <li class="showAll northindian "><a href=""><img src="images/biriyani.JPG" style="vertical-align:middle; width:100% !important; height:100% !important;" />
+                        <p class="customLineheight" style="width:100% !important; ">
+                        <span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+                        </span><span style="width:20% !important; float:right !important;"><span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+                        <img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="Qty" /></span></span>
+                        <span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+                        </span></p></a></li> -->
+            </ul>
+
+		</div>
+    </div><!-- /content -->
+    
+    <div data-role="footer">
+             <div id="header" style="display:block; ">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Checkout</h2></center>
+                    </div>
+             </div>
+    </div>
+    
+    
+    
+</div>
+
+<div data-role="page" id="viewproduct" class="fontCustom"  data-title="Atoz Restaurent"  >
+
+        <!-- /header -->
+        <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#"><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Menu</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+
+    <div role="main" class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+			
+            	<h2 class="page_title" style="padding-top:20px !important; padding-left:5% !important;" id="product_name">Biriyani <img src="images/veg.jpg" style="max-width:30px;top:10px;" /></h2>
+           		<center> <img src="images/biriyani.JPG"  style="width:90%; max-height:200px !important;" /> </center>
+                 <h4 style="padding-left:5%;">Description : </h4>   
+	<center>
+
+            <p  style="width:90% !important"; > Biriyani is a traditional south indian dish , made using basmati rice and spices and chicken . served with raitha and some gravy. </p>
+            </center>
+            
+            <p style="padding-left:5% !important"> 
+            		Product Price : Rs 200.00 <br />
+		            Cusine type : South Indian <br />
+            </p>
+       
+    <center><p style=" font-size:18px;" class="fontCustom" onclick=addtocart('element.product_id')>
+		Add to Card  <img src="images/order.jpg" style="width:100%; max-width:70px; vertical-align:middle !important" />
+	</p></center>
+
+<center>
+<div style="width:50%;" class="ui-field-contain"><input  type="text" style="width:30px" placeholder="Qty" /></div>
+</center>
+            
+		</div>
+    </div><!-- /content -->
+    
+    <div data-role="footer">
+             <div id="header" style="display:block; ">
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Back to Menu</h2></center>
+                    </div>
+             </div>
+    </div>
+    
+    
+    
+</div>
         
   
   
