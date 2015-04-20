@@ -274,7 +274,7 @@ padding-right:5px !important;
     </div><!-- /content -->
     
     <div data-role="footer">
-             <div id="header" style="display:block; ">
+             <div id="header" style="display:block;" onclick="gotocart()">
                     <div class="page_title"  >
                         <center><h2 style="clear:none !important"> View Cart</h2></center>
                     </div>
@@ -316,6 +316,29 @@ padding-right:5px !important;
 	    <div role="main" class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="viewcartitems" >
+            
+            
+            <li>
+            <a ><img src="images/biriyani.JPG"  />
+            	<p>
+                <span style="float:left; width:70% !important;  line-height:25px !important;">
+                	biriyani &emsp;
+                 	<img src="images/veg.jpg"  style="max-width:30px; vertical-align:middle !important"  ><br />
+                    Cuisine : North Indian <br />
+                	 Rs &emsp;<span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont">200.00</span> 
+               </span>
+                
+                <span style="float:right; width:30% !important; line-height:25px;" >
+						<input type="text"  />
+                   <span class="amountfont" >Rs 1000 </span><br />
+            		<span data-role="button" style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF"><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />
+                    
+                    </span>
+                </span>
+               </p>
+            </a>
+		</li>
+            
             </ul>
 
 		</div>
@@ -865,7 +888,7 @@ outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>'
 outer_menu+='</span><span style="width:20% !important; float:right !important;">';
 outer_menu+='<span  style="position:relative; top:0px; width:100%;"  onclick=addtocart(\''+element.product_id+'\') >';
 outer_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselect'+element.product_id+'" style="width:100%; max-width:50px" /></span>';
-outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input disabled id="productqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></span></span>';
+outer_menu+='<span style="position:relative; top:10px; width:100%; right:0px;" ><input class="productquantity" onblur=resetqty(\'productqty'+element.product_id+'\',\''+element.product_id+'\') disabled id="productqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></span></span>';
 outer_menu+='<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom">';
 if(element.food_type=='veg')
 {
@@ -898,7 +921,7 @@ inner_menu+='<center><p style=" font-size:18px;" class="fontCustom" onclick=addt
 inner_menu+='<span id="addcarttext'+element.product_id+'"> Add to Card  </span>';
 inner_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselectdescription'+element.product_id+'" style="width:100%; max-width:70px; vertical-align:middle !important" />';
 inner_menu+='</p></center><center><div style="width:50%;" class="ui-field-contain">';
-inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  type="text" style="width:30px" placeholder="Qty" /></div></center></span>';
+inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  class="productquantity" onblur=resetqty(\'productdescriptionqty'+element.product_id+'\',\''+element.product_id+'\')  type="text" style="width:30px" placeholder="Qty" /></div></center></span>';
  
  		   });
 			   
@@ -946,7 +969,6 @@ filtermenu+='</ul>';
 				$('#filtermenu').html('');
 				$('#filtermenu').html(filtermenu);
 				
-
 
 $('#filtermenu input:checkbox').on('click',function(){
 	alert(jQuery('#filtermenu input[type=checkbox]:checked').length);
@@ -1038,6 +1060,7 @@ function addtocart(pid)
 		
 		$('#addcarttext'+pid).html('Remove from Cart');
 		
+		cart_array.push(pid);
 		
 		}else{
 //			alert('de-selected');
@@ -1051,16 +1074,40 @@ function addtocart(pid)
 		$('#productdescriptionqty'+pid).val('');
 
 		$('#addcarttext'+pid).html('Add to Cart');
+		cart_array.pop(pid);
 		
-		
-
-			}
+		}
 	
 	}
 
 
+function resetqty(qtyid , pid)
+{
+		var qty = $('#'+qtyid).val();
+		$('#productqty'+pid).val(qty);
+		$('#productdescriptionqty'+pid).val(qty);
+	}
 
 
+function gotocart()
+{
+
+	
+		final_cartjsonObj=[];
+		
+			for(var i=0; i<0;i++)
+				{
+				values ={}	;
+				values["product_id"]=cart_array[i];
+				values["product_qty"]=$('#productqty'+cart_array[i]).val();
+				
+				final_cartjsonObj.push(values);
+
+				}
+
+alert("final cart = "+ JSON.stringify(final_cartjsonObj) );	
+	
+}
 
 </script>
 

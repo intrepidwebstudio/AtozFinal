@@ -7,3 +7,7 @@ var imagepath="http://192.168.1.6/atoz/";
 var	globalusername='';
 var	globaluserid='';
 var	globaluserphone='';
+var filtermenu_array=[];
+var cart_array=[];
+
+var final_cartjsonObj=[];
