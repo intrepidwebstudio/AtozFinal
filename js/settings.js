@@ -10,4 +10,6 @@ var	globaluserphone='';
 var filtermenu_array=[];
 var cart_array=[];
 
+var globalmenuObj;
+
 var final_cartjsonObj=[];
