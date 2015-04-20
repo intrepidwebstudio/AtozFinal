@@ -923,7 +923,7 @@ inner_menu+='<center><p style=" font-size:18px;" class="fontCustom" onclick=addt
 inner_menu+='<span id="addcarttext'+element.product_id+'"> Add to Card  </span>';
 inner_menu+='<img class="unselectedproduct" src="images/order.jpg" id="productselectdescription'+element.product_id+'" style="width:100%; max-width:70px; vertical-align:middle !important" />';
 inner_menu+='</p></center><center><div style="width:50%;" class="ui-field-contain">';
-inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  class="productquantity" onblur=resetqty(\'productdescriptionqty'+element.product_id+'\',\''+element.product_id+'\')  type="text" style="width:30px" placeholder="Qty" /></div></center></span>';
+inner_menu+='<input  disabled id="productdescriptionqty'+element.product_id+'"  class="productquantity" onblur=resetqty(\'productdescriptionqty'+element.product_id+'\',\''+element.product_id+'\')  type="number" style="width:30px" placeholder="Qty" /></div></center></span>';
  
  		   });
 			   
@@ -1089,6 +1089,11 @@ function resetqty(qtyid , pid)
 		$('#productqty'+pid).val(qty);
 		$('#productdescriptionqty'+pid).val(qty);
 		$('#productcartqty'+pid).val(qty);
+		
+		if($.mobile.activePage.is("#viewcart"))
+		{
+			gotocart();
+			}
 				
 	}
 
@@ -1145,7 +1150,7 @@ cartlist+='Rs &emsp;<span  class="strikethrough amountfont">'+element.product_pr
 cartlist+='Rs &emsp;<span class=" amountfont">'+element.product_price+'</span>';	
 	}
 cartlist+='</span><span style="float:right; width:30% !important; line-height:25px;" >';
-cartlist+='<input class="productquantity" onblur=resetqty(\'productcartqty'+element.product_id+'\',\''+element.product_id+'\')  id="productcartqty'+element.product_id+'"  type="text" placeholder="Qty"  value="'+TotalQuantity+'"  /><span class="amountfont">Rs <span id="productTotal'+element.product_id+'" >'+productTotal+'</span></span><br />';
+cartlist+='<input class="productquantity" onblur=resetqty(\'productcartqty'+element.product_id+'\',\''+element.product_id+'\')  id="productcartqty'+element.product_id+'"  type="number" placeholder="Qty"  value="'+TotalQuantity+'"  /><span class="amountfont">Rs <span id="productTotal'+element.product_id+'" >'+productTotal+'</span></span><br />';
 cartlist+='<span data-role="button" style=" position:relative; right:40%; top:8px; float:right;background-color:#F00;padding:4px; border:1px solid #999; border-radius:50% ;color:#FFF" onclick=removeProduct(\''+element.product_id+'\')><img src="images/delete.png" style="max-width:18px; vertical-align:middle" />';
 cartlist+='</span></span></p></a></li>';
 
@@ -1163,6 +1168,30 @@ cartlist+='</span></span></p></a></li>';
 				$.mobile.changePage('#viewcart',{ transition:'slide' });
 	
 	}
+	
+	
+	function findAndRemove(array, property, value) {
+}
+
+//Checks countries.result for an object with a property of 'id' whose value is 'AF'
+//Then removes it ;p
+
+	
+function removeProduct(pid)
+{ 
+   $.each(final_cartjsonObj, function(index, result) {
+      if(result[product_id] == pid) {
+          //Remove from array
+          array.splice(index, 1);
+      }    
+   });
+    addtocart(pid);
+	alert(JSON.stringify(final_cartjsonObj))
+	
+	gotocart();
+}
+	
+	
 </script>
 
 
