@@ -407,7 +407,7 @@ padding-right:5px !important;
 	    <div role="main" class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" data-icon="false"  id="settingsmenu" >
-                   <li><a href="#myaccount"  data-transition="slide">My Account</a></li> 
+                   <li><a href="#" onclick="loaduserdetails()">My Account</a></li> 
                    <li><a href="#"  data-transition="slide">Privacy Policy</a></li>
                    <li><a href="#"  data-transition="slide">Terms and Conditions</a></li>
                    <li><a href="#"  data-transition="slide">Feedback</a></li>
@@ -1308,6 +1308,7 @@ function loaduserdetails()
 	
 			loadbranchEdit(UserDetails.branch_id);	
 			
+			$.mobile.changePage('#myaccount',{ transition:'slide' });
 		}
 	 },
 	 error:function(){
