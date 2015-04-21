@@ -1303,9 +1303,11 @@ function loaduserdetails()
 			$('#userphoneEdit').val(UserDetails.phone);
 			
 			var optionValue  = UserDetails.company_id;
-			$("#selectbox").val(optionValue)
-			.find("option[value="+optionValue+"]").attr('selected', true);			
+			alert("optionValue = " +optionValue);
+
+			$("#companycodeEdit option[value="+optionValue+"]").prop('selected', true);		
 	
+					alert(" UserDetails.branch_id = "+UserDetails.branch_id);
 			loadbranchEdit(UserDetails.branch_id);	
 			
 			$.mobile.changePage('#myaccount',{ transition:'slide' });
@@ -1345,15 +1347,13 @@ function loadbranchEdit(branch_id)
 						branchOptions+='<option value="">Select branch</option>';
 						$.each(branchData, function(index, element) {
 				//		alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
-						if(branch_id==element.branch_id)
-						{
-						branchOptions+='<option selected="selected" value="'+element.branch_id+'">'+element.branch_name+'</option>';
-						}else{
 						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';	
-							}
 						});
 						$('#branchidEdit').html('');
 						$('#branchidEdit').append(branchOptions);
+						
+						$("#branchidEdit option[value="+branch_id+"]").prop('selected', true);		
+						
 					}else{
 						
 						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
