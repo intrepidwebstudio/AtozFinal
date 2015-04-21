@@ -554,9 +554,15 @@ var i = setInterval(function() {
 });
 return false;
 }
+
+
+function loadlocaldatabase(){
+		db.transaction(populateDB, errorCB, successCB);	
+	}
 </script> 
 <script>
 function onDeviceReady() {
+loadlocaldatabase();
 if (window.spinnerplugin) {
         $.extend($.mobile, {
             loading: function() {
@@ -615,25 +621,18 @@ jQuery(document).ready(function(){
 	var db = window.openDatabase("atozuser", "1.0", "atoz user local Database", 200000); //will create database Dummy_DB or open it
 
 function populateDB(tx) {
-	//alert('3');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS atozuser (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL , user_id INTEGER , phone INTEGER )');
-	//alert('4');
-	
 }
 function errorCB(err) {
 }
 function successCB() {
 	db.transaction(queryDB,errorCB);
-	//alert('5');
 }
 
 
 function queryDB(tx){
-	//alert('6');
 	tx.executeSql('SELECT * FROM atozuser ',[],querySuccess,errorCB);
-	
 }
-
 function querySuccess(tx,result){
 	//alert('7');
 			var length = result.rows.length;
@@ -650,20 +649,22 @@ function querySuccess(tx,result){
 				globaluserphone= phone;
 				
 				}
-				$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
-				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
+				//$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
 				
 			}//if close
 			else{
-				//alert('8');
-				$.mobile.changePage('#registration',{ transition:'slide'  });
-
+				globaluserid='';
 			}
 }
 
 function checkuserstatus()
 {
-	db.transaction(populateDB, errorCB, successCB);	
+	if(globaluserid!='' && globaluserid!=0 && globaluserid!=null )
+		{
+			$.mobile.changePage('#placeorder',{ transition:'slide'  });
+		}else{
+			$.mobile.changePage('#registration',{ transition:'slide'  });
+			}
 	}
 	
 	
@@ -673,13 +674,9 @@ var username = $('#username').val();
 var userphone = $('#userphone').val();
 var branch_id = $('#branchid').val();
 var companycode = $('#companycode').val();
-//alert('90');
-//alert('ajaxpath='+ajaxpath);
-//alert(' User  Details  = '+username +'====='+ userphone +'====='+ branch_id +'====='+ companycode);
+
 if(username !='' && userphone !='' && branch_id!='' && companycode!='')
 {
-//alert('91');
-//alert(ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode);
 $.support.cors = true;
 $.ajax({
 url:ajaxpath+'userinsert.php?username='+username+'&userphone='+userphone+'&branch_id='+branch_id+'&companycode='+companycode,
@@ -690,16 +687,9 @@ dataType: 'json',
 crossDomain: true,
 success: function(data)
 	{
-	//	alert(data.LoginResponse);
-		
-	//	alert(data.LoginResponse.status);
-//			var	login_Response = data.LoginResponse;
-		//	alert(login_Response[0].status); 
 			if(data.LoginResponse.status=='100')
 			{
-		//		alert('11');
 				var	login_Response = data.LoginResponse;
-			//	alert('14');
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
 			}else if(login_Response.status=='101'){
 				db.transaction( function(tx){ insertvalues(tx, username, login_Response.user_id, userphone)}, ErrorCallBack );	
@@ -738,8 +728,7 @@ function insertvalues(tx,parameter1,parameter2,parameter3)
 	}
 function userinsert()
 {
-		//swiperParent.swipeTo(2);
-		
+	loadlocaldatabase();
 	$.mobile.changePage('#placeorder',{ transition:'slide'  });
 	
 	}
@@ -1282,6 +1271,9 @@ function removeProduct(pid)
 
 function loaduserdetails()
 {
+	
+	alert("globaluserid = "+globaluserid);
+	
 	$.support.cors = true;	
 	$.ajax({
 	url:ajaxpath+'loaduserdetails.php?user_id='+globaluserid,
