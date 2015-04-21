@@ -1296,9 +1296,9 @@ function loaduserdetails()
 			var optionValue  = UserDetails.company_id;
 			alert("optionValue = " +optionValue);
 			
-			$("#companycodeEdit").val(optionValue);
+			$("#companycodeEdit").val($("#companycodeEdit option[value="+optionValue+"]").val());
 			
-//			$("#companycodeEdit option[value="+optionValue+"]").prop('selected', true);		
+					alert($("#companycodeEdit option[value="+optionValue+"]").val());		
 	
 					alert(" UserDetails.branch_id = "+UserDetails.branch_id);
 			loadbranchEdit(UserDetails.branch_id);	
