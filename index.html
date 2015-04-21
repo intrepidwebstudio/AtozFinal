@@ -121,6 +121,10 @@ padding-right:5px !important;
 	 .privacyLight{
 		padding:10px !important; font-family:'Times New Roman', Times, serif !important; 
 		 }
+		 
+	.orderFont *{
+			font-family:'Times New Roman', Times, serif !important;	
+		}	 
 			
 </style>
 </head>
@@ -379,13 +383,13 @@ padding-right:5px !important;
 		</div>
     </div><!-- /content -->
     
-    <div data-role="footer">
+   <!--- <div data-role="footer">
              <div id="header" style="display:block; ">
                     <div class="page_title" data-rel="back"  >
                         <center><h2 style="clear:none !important">Back to Menu</h2></center>
                     </div>
              </div>
-    </div>
+    </div>--->
     
     
     
@@ -488,15 +492,28 @@ padding-right:5px !important;
                         </a>
                 	</div>
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Settings</h2></center>
+                        <center><h2 style="clear:none !important">Order Histroy</h2></center>
                     </div>
              </div>
         </div>
         <!-- /header -->
-      <div data-role="content">
+      <div data-role="content"  class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
-            <ul data-role="listview">
-            	
+            <ul data-role="listview" class="orderFont">
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepage()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
             </ul>    
 			
           </div>  
@@ -505,6 +522,101 @@ padding-right:5px !important;
 
     	
 </div> 
+
+<div data-role="page" id="orderhistroyview" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order Summary</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+ <div class="example-wrapper" data-iscroll>                           
+<br />
+<center>
+<div style="height:30px !important; width:70%"   >
+<center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Id : OD234522BX</span></center> 
+</div>
+<div style="height:30px !important; width:70%"   >
+<center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Date : 17-04-2015 </span></center> 
+</div>
+</center>
+
+
+<div>
+<center>
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span>
+    </div>
+
+<br />
+
+    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+        <span style="position:relative; top:30% !important"><center>Reorder this menu</center></span>
+    </div>
+</center>
+</div>            
+<br />
+
+			<ul data-role="listview" data-icon="false"  id="menulistitems" >
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            	<li class="showAll northindian "><a href="">
+<p class="customLineheight" style="width:100% !important; ">
+<span style="width:80% !important ;float:left !important;">Chicken Biriyani<br />cusine name: North Indian <br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. <span  class="strikethrough amountfont">100.00</span>&emsp; <span class=" amountfont"> 200.00</span> </span>
+</span><span style="width:20% !important; float:right !important;">
+
+<span style="position:relative; top:0px; width:100%;" onclick=addtocart('element.product_id')>
+<img src="images/order.jpg" style="width:100%; max-width:50px" /></span><span style="position:relative; top:10px; width:100%; right:0px;"><input  type="text" style="width:30px" placeholder="3" disabled="disabled" /></span></span>
+<span style="padding-top:5px; position:relative; top:10px;left:10px;" class="fontCustom"><img src="images/veg.jpg" style="max-width:30px;top:10px;" /> 
+</span></p></a></li>
+
+            </ul>    
+
+
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
 
 <div data-role="page" id="privacy" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
@@ -1594,7 +1706,10 @@ function loadbranchEdit(branch_id)
 	
 	}	
 	
+function changepage(){
 	
+	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
+	}	
 	
 
 </script>
