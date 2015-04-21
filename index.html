@@ -422,7 +422,7 @@ padding-right:5px !important;
 
 <div data-role="page" id="myaccount" class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
-        <div data-role="header" data-id="persistent"  data-position="fixed">
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
                 	<div class="gohome radius20">
                 		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
@@ -439,7 +439,6 @@ padding-right:5px !important;
         <!-- /header -->
       <div data-role="content">
         <div class="example-wrapper" data-iscroll>            
-            
                 <div class="form">
                     <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
                             <label>Name:</label>
@@ -1296,8 +1295,10 @@ function loaduserdetails()
 			
 			var optionValue  = UserDetails.company_id;
 			alert("optionValue = " +optionValue);
-
-			$("#companycodeEdit option[value="+optionValue+"]").prop('selected', true);		
+			
+			$("#companycodeEdit").val(optionValue);
+			
+//			$("#companycodeEdit option[value="+optionValue+"]").prop('selected', true);		
 	
 					alert(" UserDetails.branch_id = "+UserDetails.branch_id);
 			loadbranchEdit(UserDetails.branch_id);	
@@ -1316,7 +1317,7 @@ function loaduserdetails()
 
 function loadbranchEdit(branch_id)
 {
-	alert(" $('#companycodeEdit').val() "+ $('#companycodeEdit').val());
+	alert(" $('#companycodeEdit').val()= "+ $('#companycodeEdit').val());
 	if($('#companycodeEdit').val()!='')
 	{
 			$.support.cors = true;	
