@@ -221,7 +221,7 @@ padding-right:5px !important;
                             <input type="date" name="menu_date" id="menu_date" onchange="loadmenutime()" value="" class="form_input required" />
                             <label>Time:</label>
                             
-                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" onchange="loadbranch()" style="width:100%;" >
+                            <select type="text" name="delivery_time" id="delivery_time" class="form_input fontCustom" style="width:100%;" >
                             <option>Select delivery time</option>
                             </select>
                             
@@ -649,14 +649,10 @@ function querySuccess(tx,result){
 				globaluserid= user_id1;
 				globaluserphone= phone;
 				
-				$('#usernameEdit').val(globalusername);
-				$('#userphoneEdit').val(globaluserphone);
-				
-
-				
 				}
 				$.mobile.changePage('#placeorder',{ transition:'slide'  });   // Select date and time	
 				//alert('user_id = '+user_id1 +'  '+'username = '+username1+' phone ='+phone1 );	//alert from local db
+				
 			}//if close
 			else{
 				//alert('8');
@@ -781,6 +777,9 @@ $.each(companyData, function(index, element) {
 	
 	$('#companycode').html('');
 	$('#companycode').append(companyOptions);
+	$('#companycodeEdit').html('');
+	$('#companycodeEdit').append(companyOptions);
+	
 		
 	},
 error:function(e)
@@ -1278,9 +1277,103 @@ function removeProduct(pid)
 }
 	
 
-
-
+function loaduserdetails()
+{
+	$.support.cors = true;	
+	$.ajax({
+	url:ajaxpath+'loaduserdetails.php?user_id='+globaluserid,
+	type:'POST',
+	contentType: "application/json",
+	async: true,
+	dataType: 'json',
+	crossDomain: true,
+	success: function(data)
+	 {
+		var userdetailsResponse=data.response;
+		//var menuoptions='';
+		
+		var UserDetails=userdetailsResponse.user_details;
+				alert('userdetailsResponse.status =' +userdetailsResponse.status);
+		if(userdetailsResponse.status=='100')
+		{
+			$('#usernameEdit').val(UserDetails.username);
+			$('#userphoneEdit').val(UserDetails.phone);
+			
+			var optionValue  = UserDetails.company_id;
+			$("#selectbox").val(optionValue)
+			.find("option[value="+optionValue+"]").attr('selected', true);			
+			
+			
+			
+		}
+	 },
+	 error:function(){
+		 
+		 }
+	 
 	
+	});
+
+}
+
+function loadbranchEdit(branch_id)
+{
+	alert(" $('#companycodeEdit').val() "+ $('#companycodeEdit').val());
+	if($('#companycodeEdit').val()!='')
+	{
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'loadbranch.php?companycode='+$('#companycodeEdit').val(),
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			crossDomain: true,
+			success: function(data)
+				{
+				//	alert('load branch success');
+					var branchdetails=data.response;
+					var branchOptions='';
+					
+					if(branchdetails.status=='100')
+					{
+						var branchData=branchdetails.branchdata;
+						branchOptions+='<option value="">Select branch</option>';
+						$.each(branchData, function(index, element) {
+				//		alert('<option value="'+element.branch_id+'">'+element.branch_name+'</option>');
+						if(branch_id==element.branch_id)
+						{
+						branchOptions+='<option selected="selected" value="'+element.branch_id+'">'+element.branch_name+'</option>';
+						}else{
+						branchOptions+='<option value="'+element.branch_id+'">'+element.branch_name+'</option>';	
+							}
+						});
+						$('#branchidEdit').html('');
+						$('#branchidEdit').append(branchOptions);
+					}else{
+						
+						navigator.notification.alert("Sorry Currently we are not serving this company , Kindly try after few days", alertCallback, "AtoZ", "Done");	
+						}
+					
+				},
+			error:function(e)
+			{
+						navigator.notification.alert("Server error ,Kindly try after some time.", alertCallback, "AtoZ", "Done");	
+				}	
+			
+					});
+		
+		}
+	else{
+		
+		navigator.notification.alert("Kindly Select Your company", alertCallback, "AtoZ", "Done");	
+		
+		}	
+	
+	
+	
+	
+	}	
 </script>
 
 
