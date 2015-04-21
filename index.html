@@ -760,7 +760,7 @@ success: function(data)
 		
 $.each(companyData, function(index, element) {
 	//alert('<option value="'+element.companycode+'">'+element.company_name+'</option>');
-	companyOptions+='<option value="'+element.companycode+'">'+element.company_name+'</option>';
+	companyOptions+='<option id="optioncompany'+element.companycode+'" value="'+element.companycode+'">'+element.company_name+'</option>';
 	});
 	
 	$('#companycode').html('');
@@ -1296,13 +1296,19 @@ function loaduserdetails()
 			var optionValue  = UserDetails.company_id;
 			alert("optionValue = " +optionValue);
 			
-			$("#companycodeEdit").val($("#companycodeEdit option[value="+optionValue+"]").val());
 			
-					alert($("#companycodeEdit option[value="+optionValue+"]").val());		
-	
+					$("#companycodeEdit option").each(function(){
+							$(this).on( "click", function(event, ui) {
+							$(this).attr('selected' , true);
+							$('#companycodeEdit').selectmenu('refresh');                
+						});         
+					});    
+					
+					$('#companycodeEdit option#optioncompany'+optionValue).trigger('click'); 
+
 					alert(" UserDetails.branch_id = "+UserDetails.branch_id);
+
 			loadbranchEdit(UserDetails.branch_id);	
-			
 			$.mobile.changePage('#myaccount',{ transition:'slide' });
 		}
 	 },
@@ -1371,6 +1377,10 @@ function loadbranchEdit(branch_id)
 	
 	
 	}	
+	
+	
+	
+
 </script>
 
 
