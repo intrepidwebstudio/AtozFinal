@@ -1866,6 +1866,25 @@ function checkoutpayement()
 {
 	alert(JSON.stringify(final_cartjsonObj));
 	
+			$.support.cors = true;	
+			$.ajax({
+			url:ajaxpath+'checkoutorder.php',
+			type:'POST',
+			contentType: "application/json",
+			async: true,
+			dataType: 'json',
+			data:{data:final_cartjsonObj},
+			crossDomain: true,
+			success: function(data)
+				{
+				alert("Recieved data"+ JSON.stringify(data));
+				},
+			error:function(data)
+			{
+				alert('error');
+				}	
+			
+				});	
 	
 	
 	}	
