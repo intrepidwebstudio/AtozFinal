@@ -105,7 +105,6 @@ padding-right:5px !important;
 }	
 
  .amountfont{
-	 
 	 font-size:18px !important ;
 	 }
 	 
@@ -127,6 +126,31 @@ padding-right:5px !important;
 		}	 
 			
 </style>
+ <style type="text/css">
+ /*
+.circle-processed:before {
+    content: ' \25CF';
+    font-size: 100px;
+}
+.circle-processing:before {
+    content: ' \25CB';
+    font-size: 50px;
+}
+*/
+.circle-processed{
+		background-color:#0F0;
+		border-radius:50%;
+		padding:3px;
+		
+			}
+.circle-processing{
+	background-color:#CCC;
+	border-radius:50%;
+	padding:3px;
+	}
+
+
+						</style>
 </head>
 <body>
 
@@ -136,10 +160,10 @@ padding-right:5px !important;
         <div class="logo"><a href="#"  style="color:#BF6000">AtoZ<span> Have your meal in few clicks </span></a></div>
         <div class="menu">
         <ul class="fontCustom">
-        <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
-        <li><a href="#" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
-        <li><a href="#orderhistroy" data-transition="slide" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Order History</span></a></li>
-        <li><a href="#settings" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Settings</span></a></li>
+                <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
+                <li><a href="#trackorder" data-transition="slide" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
+                <li><a href="#orderhistroy" data-transition="slide" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Order History</span></a></li>
+                <li><a href="#settings" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Settings</span></a></li>
         </ul>
         
         <div class="clearfix"></div>
@@ -166,10 +190,9 @@ padding-right:5px !important;
         </div>
         <!-- /header -->
 
-    <!--content--->
-    <div data-role="content">
+    	<!--content--->
+  	<div data-role="content">
         <div class="example-wrapper" data-iscroll>            
-            
                 <div class="form">
                     <form class="cmxform fontCustom" id="CommentForm" method="post" action="#">
                             <label>Name:</label>
@@ -194,8 +217,8 @@ padding-right:5px !important;
                 </div>
 			<div class="clearfix"></div>
           </div>  
-        
     </div>
+    
 </div>
 
 
@@ -207,8 +230,6 @@ padding-right:5px !important;
                 	<div class="gohome radius20">
                 		<a href="#home" data-transition="slide" ><img src="images/icons/home.png" alt="" title="" /></a>
                 	</div>
-                    
-                    
                 	<div class="gomenu radius20">
                 		<a href="#" onclick="swiperParent.swipeTo(9);">
                         	<img src="images/icons/contact.png" alt="" title="" />
@@ -234,9 +255,8 @@ padding-right:5px !important;
                             <option>Select delivery time</option>
                             </select>
                             
-                            
                             <button type="button" onclick="loadmenulist()" name="submit" class="form_submit green green_borderbottom" >
-                            Next
+                            	Next
                             </button>
                             
                             <center>                      
@@ -350,7 +370,7 @@ padding-right:5px !important;
 		</div>
     </div><!-- /content -->
     	<div data-role="footer">
-             <div id="header" style="display:block; ">
+             <div id="header" style="display:block;" onclick="checkoutpayement()">
                     <div class="page_title"  >
                         <center><h2 style="clear:none !important">Checkout</h2></center>
                     </div>
@@ -514,6 +534,130 @@ padding-right:5px !important;
                 </li>	
             </ul>    
 			
+          </div>  
+        
+    </div>
+
+    	
+</div>
+
+
+<div data-role="page" id="trackorder" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Track Order</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+            <ul data-role="listview" class="orderFont">
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            </ul>    
+			
+          </div>  
+        
+    </div>
+
+    	
+</div> 
+
+
+<div data-role="page" id="trackorderstatus" class="fontCustom"  data-title="Atoz Restaurent"  >
+        <!-- /header -->
+		     <div data-role="header" data-id="persistent"  data-position="fixed">
+             <div id="header" style="display:block">
+                	<div class="gohome radius20">
+                		<a href="#home" data-transition="slide"  ><img src="images/icons/home.png" alt="" title="" /></a>
+                	</div>
+                	<div class="gomenu radius20">
+                		<a href="#right-panel" data-icon="carat-l" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon" >												    						<img src="images/icons/menu.png" alt="" title="" />
+                        </a>
+                	</div>
+                    <div class="page_title"  >
+                        <center><h2 style="clear:none !important">Order status</h2></center>
+                    </div>
+             </div>
+        </div>
+        <!-- /header -->
+      <div data-role="content"  class="ui-content menu_content">
+        <div class="example-wrapper" data-iscroll>            
+                    <br />
+                 <span onclick="vieworderdetails()">   
+                    <center>
+                    <div style="height:30px !important; width:70%"   >
+                    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Id : OD234522BX</span></center> 
+                    </div>
+                    <div style="height:30px !important; width:70%"   >
+                    <center><span style="font-family:'Times New Roman', Times, serif !important; font-weight:bolder"> Order Date : 17-04-2015  ,  Payment success </span></center> 
+                    </div>
+                    </center>
+                 </span>   
+                    
+           <div>
+                    <center>
+                    <div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >
+                    <span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span>
+                    </div>
+              		</center>
+                    </div>
+					
+	  	   <div style="position:absolute !important; top:150; left:0;right:0; width:100%; height:200px">  
+                    	
+                    <div style="position:relative !important; top:20px; right:52%; left:2%; text-align:right; width:43% ;height:24%">
+							Order Placed
+                    </div>    
+
+                    <div style="position:relative !important; top:17%; left:57%; right:2%; width:43%; height:24%">
+                		    Order is cooking now
+                    </div>    
+
+                    <div style="position:relative !important; top:28%; right:52%; left:2%; width:43%;  text-align:right; height:24%">
+              		      	Order created & Packed
+                    </div>    
+
+                    <div style="position:relative !important; top:34%; left:57%; right:2%; width:43%; height:24%">
+                    		Order Dispatched for delivery
+                    </div>    
+					
+               </div>
+               
+           <div style="border:2px solid #000; border-radius:10px; position:absolute; left:50%; height:200px; top:150px; width:0% !important">
+                        
+                            <div class="circle-processed" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div class="circle-processed" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div class="circle-processing" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>
+                            <div class="circle-processing" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                        </div>                        
+                        
+                        
+
+                            
+                            
+                            
           </div>  
         
     </div>
@@ -887,6 +1031,7 @@ function loadlocaldatabase(){
 </script> 
 <script>
 function onDeviceReady() {
+	$.mobile.page.prototype.options.domCache = true;
 loadlocaldatabase();
 if (window.spinnerplugin) {
         $.extend($.mobile, {
@@ -1705,11 +1850,25 @@ function loadbranchEdit(branch_id)
 	}	
 	
 function changepage(){
-	
 	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
 	}	
 	
-
+function changepagetrack(){
+	$.mobile.changePage('#trackorderstatus',{ transition:'slide' });
+	}	
+function vieworderdetails()
+{
+	
+	}
+	
+	
+function checkoutpayement()
+{
+	alert(JSON.stringify(final_cartjsonObj));
+	
+	
+	
+	}	
 </script>
 
 
