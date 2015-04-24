@@ -1404,7 +1404,7 @@ var food_type_array=[];
 
 
 $.each(productResponse, function(index, element) {
-	
+MenuDateId=data.menu_date_id;	
 var classcuisine_name=element.cuisine_name;
 	classcuisine_name=classcuisine_name.replace(" ",""); 
 var classcategory_name=element.category_name;
@@ -1866,7 +1866,7 @@ function checkoutpayement()
 {
 	alert(JSON.stringify(final_cartjsonObj));
 	
-	var MenuDetails={ "MenuTypeId":MenuTypeId, "MenuDate":MenuDate }
+	var MenuDetails={ "MenuTypeId":MenuTypeId, "MenuDate":MenuDate , "MenuDateId":MenuDateId }
 	
 	var UserDetails={ "UserId":globaluserid }
 	

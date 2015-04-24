@@ -15,3 +15,4 @@ var globalmenuObj;
 var final_cartjsonObj=[];
 var MenuTypeId='';
 var MenuDate='';
+var MenuDateId='';
