@@ -1340,7 +1340,7 @@ if($('#menu_date').val()!='')
 			if(data.status.status=='100')
 			{
 				$.each(menuResponse, function(index, element) {
-						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
+						menuoptions+='<option value="'+element.menu_date_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
 					});
 					
 					alert(menuoptions);
@@ -1371,14 +1371,13 @@ if($('#menu_date').val()!='')
 function loadmenulist()
 {
 	
-//	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
 //alert('ss');
 	$.support.cors = true;	
 	
 	MenuTypeId=$('#delivery_time').val();
 	MenuDate=$('#menu_date').val();
 	$.ajax({
-	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
+	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val(),
 	type:'POST',
 	contentType: "application/json",
 	async: true,
@@ -1890,11 +1889,11 @@ function checkoutpayement()
 			crossDomain: true,
 			success: function(data)
 				{
-				alert("Recieved data"+ JSON.stringify(data));
+					alert("Recieved data"+ JSON.stringify(data));
 				},
 			error:function(data)
 			{
-				alert('error');
+					alert('error');
 				}	
 			
 				});	
