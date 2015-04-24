@@ -13,3 +13,5 @@ var cart_array=[];
 var globalmenuObj;
 
 var final_cartjsonObj=[];
+var MenuTypeId='';
+var MenuDate='';

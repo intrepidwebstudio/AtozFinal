@@ -1374,6 +1374,9 @@ function loadmenulist()
 //	alert('path = '+ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val());
 //alert('ss');
 	$.support.cors = true;	
+	
+	MenuTypeId=$('#delivery_time').val();
+	MenuDate=$('#menu_date').val();
 	$.ajax({
 	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
 	type:'POST',
@@ -1390,9 +1393,7 @@ function loadmenulist()
 			{
 					var outer_menu='';
 					var inner_menu='';
-					
 					var productResponse=data.response;
-					
 					globalmenuObj=data.response;
 
 //alert('aall ok');
@@ -1866,6 +1867,18 @@ function checkoutpayement()
 {
 	alert(JSON.stringify(final_cartjsonObj));
 	
+	var MenuDetails={ "MenuTypeId":MenuTypeId, "MenuDate":MenuDate }
+	
+	var UserDetails={ "UserId":globaluserid }
+	
+ var Obj = {
+	 		"MenuDetails": MenuDetails, 
+			"UserDetails": UserDetails,
+			"CartDetails": final_cartjsonObj
+	 				}	
+	
+	alert(JSON.stringify(Obj));
+	
 			$.support.cors = true;	
 			$.ajax({
 			url:ajaxpath+'checkoutorder.php',
@@ -1873,7 +1886,7 @@ function checkoutpayement()
 			contentType: "application/json",
 			async: true,
 			dataType: 'json',
-			data:{data:final_cartjsonObj},
+			data:JSON.stringify(Obj),
 			crossDomain: true,
 			success: function(data)
 				{
