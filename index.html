@@ -1340,7 +1340,7 @@ if($('#menu_date').val()!='')
 			if(data.status.status=='100')
 			{
 				$.each(menuResponse, function(index, element) {
-						menuoptions+='<option value="'+element.menu_date_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
+						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
 					});
 					
 					alert(menuoptions);
