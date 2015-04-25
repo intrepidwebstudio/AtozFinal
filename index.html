@@ -1371,13 +1371,14 @@ if($('#menu_date').val()!='')
 function loadmenulist()
 {
 	
-//alert('ss');
+alert(ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val());
+
 	$.support.cors = true;	
 	
 	MenuTypeId=$('#delivery_time').val();
 	MenuDate=$('#menu_date').val();
 	$.ajax({
-	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val(),
+	url:ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_type_id='+$('#delivery_time').val(),
 	type:'POST',
 	contentType: "application/json",
 	async: true,
