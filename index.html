@@ -1427,7 +1427,7 @@ outer_menu+='<p class="customLineheight" style="width:100% !important; ">';
 outer_menu+='<span style="width:80% !important ;float:left !important;" onclick=viewproductdescription(\''+element.product_id+'\')>'+element.product_name+'<br />cusine name: '+element.cuisine_name+'<br /><span style="position:relative !important; bottom:0 !important;">Amount Rs. ';
 if(element.discount_percentage!=0)
 {
-outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span>';
+outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span><input type="hidden" value="'+element.discount_price+'" id="product_price'+element.product_id+'"  >';
 }else{
 outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>';	
 	}
@@ -1653,6 +1653,7 @@ function gotocart()
 				values ={}	;
 				values["product_id"]=cart_array[i];
 				values["product_qty"]=$('#productqty'+cart_array[i]).val();
+				values["product_amount"]=$('#product_price'+cart_array[i]).val();
 				
 				final_cartjsonObj.push(values);
 
@@ -1674,6 +1675,8 @@ $.each(globalmenuObj, function(index, element) {
     if (this.product_id == element.product_id) {
 	var TotalQuantity =	this.product_qty;	
 	var	productTotal = (TotalQuantity) * (element.product_price);
+	
+	
 		
       //  alert("found:  " + JSON.stringify(this));
   
