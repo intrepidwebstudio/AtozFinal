@@ -1429,7 +1429,7 @@ if(element.discount_percentage!=0)
 {
 outer_menu+='<span  class="strikethrough amountfont">'+element.product_price+'</span>&emsp; <span class=" amountfont">'+element.discount_price+'</span> </span><input type="hidden" value="'+element.discount_price+'" id="product_price'+element.product_id+'"  >';
 }else{
-outer_menu+='<span class=" amountfont">'+element.product_price+'</span> </span>';	
+outer_menu+='<span class=" amountfont">'+element.product_price+'</span></span><input type="hidden" value="'+element.product_price+'" id="product_price'+element.product_id+'"  >';
 	}
 outer_menu+='</span><span style="width:20% !important; float:right !important;">';
 outer_menu+='<span  style="position:relative; top:0px; width:100%;"  onclick=addtocart(\''+element.product_id+'\') >';
