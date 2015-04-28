@@ -161,7 +161,7 @@ padding-right:5px !important;
         <div class="menu">
         <ul class="fontCustom">
                 <li><a href="#" onclick="checkuserstatus()"><img src="colors/restaurant/images/Place order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Place Order</span></a></li>
-                <li><a href="#trackorder" data-transition="slide" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
+                <li><a href="#" onclick="loadliveorder()" ><img src="colors/restaurant/images/Track order.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Track Order</span></a></li>
                 <li><a href="#orderhistroy" data-transition="slide" ><img src="colors/restaurant/images/orderhistory.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Order History</span></a></li>
                 <li><a href="#settings" data-transition="slide" ><img src="colors/restaurant/images/setting.png" alt="" title="" /><span style="position:relative !important; top:30px !important; font-size:14px">Settings</span></a></li>
         </ul>
@@ -542,7 +542,7 @@ padding-right:5px !important;
 </div>
 
 
-<div data-role="page" id="trackorder" class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page"  class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
@@ -561,7 +561,7 @@ padding-right:5px !important;
         <!-- /header -->
       <div data-role="content"  class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
-            <ul data-role="listview" class="orderFont">
+            <ul data-role="listview" class="orderFont" id="trackorderlist" >
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
@@ -1839,14 +1839,8 @@ function loadbranchEdit(branch_id)
 		
 		}
 	else{
-		
 		navigator.notification.alert("Kindly Select Your company", alertCallback, "AtoZ", "Done");	
-		
 		}	
-	
-	
-	
-	
 	}	
 	
 function changepage(){
@@ -1900,6 +1894,30 @@ function checkoutpayement()
 	
 	
 	}	
+function loadliveorder()	
+{
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'loadliveorders.php?user_id='+globaluserid,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			   	alert(JSON.stringify(data));
+				
+				$.mobile.changePage('#trackorder',{  transition:'slide' });
+			},
+		error:function(){
+			}	
+		});
+	
+	
+	
+	}
 </script>
 
 
