@@ -1912,7 +1912,7 @@ function loadliveorder()
 				
 				var OrderListObj = data.response;
 				var statusObj = data.status;
-				var trackorderlist='';
+				var trackorderList='';
 				
 				alert(statusObj.status);
 				alert(JSON.stringify(OrderListObj));
@@ -1926,11 +1926,11 @@ function loadliveorder()
 				$.each(OrderListObj, function(index, element) {
 					
 					alert("TEst = "+ element.id);
-					 trackorderlist+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
+					 trackorderList+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
-	alert(trackorderlist);
+	alert(trackorderList);
 	
-				$('#trackorderlist').empty().append(trackorderlist);
+				$('#trackorderlist').empty().append(trackorderList);
 				$('#trackorderlist').trigger("create");
 				$('#trackorderlist').listview().listview('refresh');
 
