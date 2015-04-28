@@ -1,6 +1,6 @@
 // JavaScript Document
-var ajaxpath="http://192.168.1.198/atoz/app/";
-var imagepath="http://192.168.1.198/atoz/";
+var ajaxpath="http://192.168.1.13/atoz/app/";
+var imagepath="http://192.168.1.13/atoz/";
 
 //var ajaxpath="http://www.safelearners.com/atoz/app/";
 //var imagepath="http://www.safelearners.com/atoz/";
