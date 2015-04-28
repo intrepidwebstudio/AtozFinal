@@ -559,7 +559,7 @@ padding-right:5px !important;
              </div>
         </div>
         <!-- /header -->
-      <div data-role="content"  class="ui-content menu_content">
+      <div data-role="content"  id="trackorder" class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" class="orderFont" id="trackorderlist" >
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
@@ -1907,9 +1907,34 @@ function loadliveorder()
 		crossDomain: true,
 		success: function(data)
 			{
-			   	alert(JSON.stringify(data));
+			   	//alert(JSON.stringify(data));
+				
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderlist='';
+				
+				if(statusObj.status=='100')
+				{
+					
+					
+				
+				$.each(OrderListObj, function(index, element) {
+					
+					 trackorderlist+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
+				});
+	
+	
+				$('#trackorderlist').empty().append(trackorderlist);
+				$('#trackorderlist').trigger("create");
+				$('#trackorderlist').listview().listview('refresh');
+
 				
 				$.mobile.changePage('#trackorder',{  transition:'slide' });
+				
+				}else{
+					
+					alert('no order made yet');
+					}
 			},
 		error:function(){
 			}	
