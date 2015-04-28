@@ -1925,9 +1925,10 @@ function loadliveorder()
 				
 				$.each(OrderListObj, function(index, element) {
 					
+					alert("TEst = "+ element.id);
 					 trackorderlist+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
-	
+	alert(trackorderlist);
 	
 				$('#trackorderlist').empty().append(trackorderlist);
 				$('#trackorderlist').trigger("create");
