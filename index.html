@@ -542,7 +542,7 @@ padding-right:5px !important;
 </div>
 
 
-<div data-role="page"  class="fontCustom"  data-title="Atoz Restaurent"  >
+<div data-role="page" id="trackorder"  class="fontCustom"  data-title="Atoz Restaurent"  >
         <!-- /header -->
 		     <div data-role="header" data-id="persistent"  data-position="fixed">
              <div id="header" style="display:block">
@@ -559,7 +559,7 @@ padding-right:5px !important;
              </div>
         </div>
         <!-- /header -->
-      <div data-role="content"  id="trackorder" class="ui-content menu_content">
+      <div data-role="content"   class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" class="orderFont" id="trackorderlist" >
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
@@ -604,8 +604,8 @@ padding-right:5px !important;
         </div>
         <!-- /header -->
       <div data-role="content"  class="ui-content menu_content">
-        <div class="example-wrapper" data-iscroll>            
-                    <br />
+        <div class="example-wrapper" data-iscroll id="trackorderstatusview">            
+<!--                    <br />
                  <span onclick="vieworderdetails()">   
                     <center>
                     <div style="height:30px !important; width:70%"   >
@@ -647,16 +647,16 @@ padding-right:5px !important;
                
            <div style="border:2px solid #000; border-radius:10px; position:absolute; left:50%; height:200px; top:150px; width:0% !important">
                         
-                            <div class="circle-processed" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
-                            <div class="circle-processed" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
-                            <div class="circle-processing" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>
-                            <div class="circle-processing" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div id="status1" class="circle-processed" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div id="status2" class="circle-processed" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
+                            <div id="status3" class="circle-processing" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>
+                            <div id="status4" class="circle-processing" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>
                         </div>                        
                         
                         
 
                             
-                            
+-->                            
                             
           </div>  
         
@@ -1848,7 +1848,81 @@ function changepage(){
 	}	
 	
 function changepagetrack(){
-	$.mobile.changePage('#trackorderstatus',{ transition:'slide' });
+	
+		alert('aasassa=='+globaluserid);
+		$.support.cors = true;	
+		$.ajax({
+		url:ajaxpath+'loadliveorders.php?user_id='+globaluserid,
+		type:'POST',
+		contentType: "application/json",
+		async: true,
+		dataType: 'json',
+//		data:JSON.stringify(Obj),
+		crossDomain: true,
+		success: function(data)
+			{
+			   	//alert(JSON.stringify(data));
+				var OrderListObj = data.response;
+				var statusObj = data.status;
+				var trackorderStatus='';
+				if(statusObj.status=='100')
+				{
+					var orderid = OrderListObj.order_id;
+					var id = OrderListObj.id;
+					var order_date = OrderListObj.order_date;
+					var order_amount = OrderListObj.order_amount;
+					var order_status = OrderListObj.order_status;
+					var payment_status = OrderListObj.payment_status;
+					var order_status_count = OrderListObj.order_status_count;
+					var StatusClassArray=[];
+					
+					if(order_status_count!=0 && order_status_count!=5)
+					{
+						for(var i=0;i<4;i++)
+						{
+							   if(i<order_status_count)
+							   {
+							    StatusClassArray.push('circle-processed');	
+								}else{
+								StatusClassArray.push('circle-processing');	
+									}
+							
+							}
+					}else{
+							for(var i=0;i<4;i++)
+							{
+							 	StatusClassArray.push('circle-processing');	
+							}
+						
+						}
+							
+					
+trackorderStatus+='<br /><span onclick="vieworderdetails()"><center><div style="height:30px !important; width:70%"   >';
+trackorderStatus+='<center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Id : '+orderid+'</span></center>';
+trackorderStatus+='</div><div style="height:30px !important; width:70%"   ><center><span style="font-family:\'Times New Roman\', Times, serif !important; font-weight:bolder"> Order Date : '+order_date+'  ,  '+payment_status+' </span></center>';
+trackorderStatus+='</div></center></span><div><center><div style="width:70%; background-color:#8a150e; height:40px; color:#FFF"  >';
+trackorderStatus+='<span style="position:relative; top:30% !important"><center> Bill Amount : Rs 1000.00  /-</center></span></div></center></div>';
+trackorderStatus+='<div style="position:absolute !important; top:150; left:0;right:0; width:100%; height:200px">';
+trackorderStatus+='<div style="position:relative !important; top:20px; right:52%; left:2%; text-align:right; width:43% ;height:24%">Order Placed';
+trackorderStatus+='</div><div style="position:relative !important; top:17%; left:57%; right:2%; width:43%; height:24%">';
+trackorderStatus+='Order is cooking now</div><div style="position:relative !important; top:28%; right:52%; left:2%; width:43%;  text-align:right; height:24%">';
+trackorderStatus+='Order created & Packed</div><div style="position:relative !important; top:34%; left:57%; right:2%; width:43%; height:24%">';
+trackorderStatus+='Order Dispatched for delivery</div></div>';
+trackorderStatus+='<div style="border:2px solid #000; border-radius:10px; position:absolute; left:50%; height:200px; top:150px; width:0% !important">';
+trackorderStatus+='<div id="status1" class="'+StatusClassArray[0]+'" style="position:relative;top:-15px;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div>';
+trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>';
+trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
+trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
+
+					$('#trackorderstatusview').html('');
+					$('#trackorderstatusview').html(trackorderStatus);
+					
+				}
+			}
+		});
+	
+	
+		$.mobile.changePage('#trackorderstatus',{ transition:'slide' });
 	}	
 function vieworderdetails()
 {
@@ -1913,37 +1987,19 @@ function loadliveorder()
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var trackorderList='';
-				
-				alert(statusObj.status);
-				alert(JSON.stringify(OrderListObj));
-				
-				
 				if(statusObj.status=='100')
 				{
-					
-					
-				
 				$.each(OrderListObj, function(index, element) {
-					
-					alert("TEst = "+ element.id);
 					 trackorderList+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
-	alert(trackorderList);
-				alert('1');
-	
-				$('#trackorderlist').empty().append(trackorderList);
-				alert('2');
-				$('#trackorderlist').trigger("create");
-				alert('3');
-				$('#trackorderlist').listview().listview('refresh');
-				alert('4');
-
 				
+				$('#trackorderlist').empty().append(trackorderList);
+				$('#trackorderlist').trigger("create");
+				$('#trackorderlist').listview().listview('refresh');
 				$.mobile.changePage('#trackorder',{  transition:'slide' });
 				
 				}else{
-					
-					alert('no order made yet');
+				alert('no order made yet');
 					}
 			},
 		error:function(){
