@@ -562,8 +562,6 @@ padding-right:5px !important;
       <div data-role="content"   class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" class="orderFont" id="trackorderlist" >
-<!---            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
-                </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
@@ -574,7 +572,9 @@ padding-right:5px !important;
                 </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
-            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div> ---->
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+                </li>	
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div> 
                 </li>	
             </ul>    
 			
@@ -2003,6 +2003,7 @@ function loadliveorder()
 				
 				}else{
 //				alert('no order made yet');
+				$.mobile.changePage('#trackorder',{  transition:'slide' });
 					}
 			},
 		error:function(){
