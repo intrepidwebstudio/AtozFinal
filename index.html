@@ -372,7 +372,7 @@ padding-right:5px !important;
     	<div data-role="footer">
              <div id="header" style="display:block;" onclick="checkoutpayement()">
                     <div class="page_title"  >
-                        <center><h2 style="clear:none !important">Checkout</h2></center>
+                        <center><h2 style="clear:none !important"><span id="totalbill"></span>&emsp;Checkout</h2></center>
                     </div>
              </div>
     </div>
@@ -605,7 +605,7 @@ padding-right:5px !important;
         <!-- /header -->
       <div data-role="content"  class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll id="trackorderstatusview">            
-<!--                    <br />
+                    <br />
                  <span onclick="vieworderdetails()">   
                     <center>
                     <div style="height:30px !important; width:70%"   >
@@ -655,9 +655,6 @@ padding-right:5px !important;
                         
                         
 
-                            
--->                            
-                            
           </div>  
         
     </div>
@@ -1343,7 +1340,7 @@ if($('#menu_date').val()!='')
 						menuoptions+='<option value="'+element.menu_type_id+'" >'+element.menu_name +' ( '+ element.menu_time +' )</option>';
 					});
 					
-					alert(menuoptions);
+	//				alert(menuoptions);
 					$('#delivery_time').html('');
 					$('#delivery_time').append(menuoptions);
 				
@@ -1371,7 +1368,7 @@ if($('#menu_date').val()!='')
 function loadmenulist()
 {
 	
-alert(ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val());
+//alert(ajaxpath+'loadmenulist.php?menu_date='+ $('#menu_date').val()+'&user_id='+ globaluserid+'&menu_date_id='+$('#delivery_time').val());
 
 	$.support.cors = true;	
 	
@@ -1657,6 +1654,8 @@ function gotocart()
 					TotalCartAmount = TotalCartAmount + ($('#product_price'+cart_array[i]).val() * $('#productqty'+cart_array[i]).val() );
 					final_cartjsonObj.push(values);
 				}
+		$('#totalbill').html('Rs '+TotalCartAmount);		
+				
 	//alert("final cart = "+ JSON.stringify(final_cartjsonObj));	
 	viewCartList();
 }
@@ -1742,7 +1741,7 @@ function removeProduct(pid)
 function loaduserdetails()
 {
 	
-	alert("globaluserid = "+globaluserid);
+//	alert("globaluserid = "+globaluserid);
 	
 	$.support.cors = true;	
 	$.ajax({
@@ -1758,14 +1757,14 @@ function loaduserdetails()
 		//var menuoptions='';
 		
 		var UserDetails=userdetailsResponse.user_details;
-				alert('userdetailsResponse.status =' +userdetailsResponse.status);
+	//			alert('userdetailsResponse.status =' +userdetailsResponse.status);
 		if(userdetailsResponse.status=='100')
 		{
 			$('#usernameEdit').val(UserDetails.username);
 			$('#userphoneEdit').val(UserDetails.phone);
 			
 			var optionValue  = UserDetails.company_id;
-			alert("optionValue = " +optionValue);
+	//		alert("optionValue = " +optionValue);
 			
 			
 					$("#companycodeEdit option").each(function(){
@@ -1777,7 +1776,7 @@ function loaduserdetails()
 					
 					$('#companycodeEdit option#optioncompany'+optionValue).trigger('click'); 
 
-					alert(" UserDetails.branch_id = "+UserDetails.branch_id);
+	//				alert(" UserDetails.branch_id = "+UserDetails.branch_id);
 
 			loadbranchEdit(UserDetails.branch_id);	
 			$.mobile.changePage('#myaccount',{ transition:'slide' });
@@ -1794,7 +1793,7 @@ function loaduserdetails()
 
 function loadbranchEdit(branch_id)
 {
-	alert(" $('#companycodeEdit').val()= "+ $('#companycodeEdit').val());
+//	alert(" $('#companycodeEdit').val()= "+ $('#companycodeEdit').val());
 	if($('#companycodeEdit').val()!='')
 	{
 			$.support.cors = true;	
@@ -1849,7 +1848,7 @@ function changepage(){
 	
 function changepagetrack(OrderID){
 	
-		alert('aasassa=='+globaluserid);
+	//	alert('aasassa=='+globaluserid);
 		$.support.cors = true;	
 		$.ajax({
 		url:ajaxpath+'trackorderstatusview.php?user_id='+globaluserid+'&order_id='+OrderID,
@@ -1861,13 +1860,13 @@ function changepagetrack(OrderID){
 		crossDomain: true,
 		success: function(data)
 			{
-			   	alert(JSON.stringify(data));
+			 //  	alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var trackorderStatus='';
 				if(statusObj.status=='100')
 				{
-					alert('order_id = '+ OrderListObj.order_id );
+				//	alert('order_id = '+ OrderListObj.order_id );
 					
 					var orderid = OrderListObj.order_id;
 					var id = OrderListObj.id;
@@ -1916,10 +1915,10 @@ trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="posi
 trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
 trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
 
-alert(trackorderStatus);
+//alert(trackorderStatus);
 
-					$('#trackorderstatusview').html('');
-					$('#trackorderstatusview').html(trackorderStatus);
+//					$('#trackorderstatusview').html('');
+	//				$('#trackorderstatusview').html(trackorderStatus);
 					
 				}
 			}
@@ -1936,7 +1935,7 @@ function vieworderdetails()
 	
 function checkoutpayement()
 {
-	alert(JSON.stringify(final_cartjsonObj));
+//	alert(JSON.stringify(final_cartjsonObj));
 	
 	var MenuDetails={ "MenuTypeId":MenuTypeId, "MenuDate":MenuDate , "MenuDateId":MenuDateId ,"TotalCartAmount":TotalCartAmount }
 	
@@ -1948,7 +1947,7 @@ function checkoutpayement()
 			"CartDetails": final_cartjsonObj
 	 				}	
 	
-	alert(JSON.stringify(Obj));
+//	alert(JSON.stringify(Obj));
 	
 			$.support.cors = true;	
 			$.ajax({
@@ -1961,11 +1960,11 @@ function checkoutpayement()
 			crossDomain: true,
 			success: function(data)
 				{
-					alert("Recieved data"+ JSON.stringify(data));
+		//			alert("Recieved data"+ JSON.stringify(data));
 				},
 			error:function(data)
 			{
-					alert('error');
+	//				alert('error');
 				}	
 			
 				});	
@@ -1974,7 +1973,7 @@ function checkoutpayement()
 	}	
 function loadliveorder()	
 {
-	alert('aasassa=='+globaluserid);
+//	alert('aasassa=='+globaluserid);
 		$.support.cors = true;	
 		$.ajax({
 		url:ajaxpath+'loadliveorders.php?user_id='+globaluserid,
@@ -2003,7 +2002,7 @@ function loadliveorder()
 				$.mobile.changePage('#trackorder',{  transition:'slide' });
 				
 				}else{
-				alert('no order made yet');
+//				alert('no order made yet');
 					}
 			},
 		error:function(){
