@@ -562,7 +562,7 @@ padding-right:5px !important;
       <div data-role="content"   class="ui-content menu_content">
         <div class="example-wrapper" data-iscroll>            
             <ul data-role="listview" class="orderFont" id="trackorderlist" >
-            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+<!---            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
@@ -574,7 +574,7 @@ padding-right:5px !important;
                 </li>	
             	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
                 </li>	
-            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div>
+            	<li onclick="changepagetrack()"><div ><span style="float:left;">Oder Id : OD234522BX</span><span style="float:right;">Rs 1000.00  &emsp;&emsp; 17-04-2015</span></div> ---->
                 </li>	
             </ul>    
 			
@@ -1847,12 +1847,12 @@ function changepage(){
 	 $.mobile.changePage('#orderhistroyview',{ transition:'slide' });
 	}	
 	
-function changepagetrack(){
+function changepagetrack(OrderID){
 	
 		alert('aasassa=='+globaluserid);
 		$.support.cors = true;	
 		$.ajax({
-		url:ajaxpath+'trackorderstatusview.php?user_id='+globaluserid,
+		url:ajaxpath+'trackorderstatusview.php?user_id='+globaluserid+'&order_id='+OrderID,
 		type:'POST',
 		contentType: "application/json",
 		async: true,
@@ -1861,7 +1861,7 @@ function changepagetrack(){
 		crossDomain: true,
 		success: function(data)
 			{
-			   	//alert(JSON.stringify(data));
+			   	alert(JSON.stringify(data));
 				var OrderListObj = data.response;
 				var statusObj = data.status;
 				var trackorderStatus='';
@@ -1915,6 +1915,8 @@ trackorderStatus+='<div id="status1" class="'+StatusClassArray[0]+'" style="posi
 trackorderStatus+='<div id="status2" class="'+StatusClassArray[1]+'" style="position:relative;top:11%;left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%" /></div>';
 trackorderStatus+='<div id="status3" class="'+StatusClassArray[2]+'" style="position:relative;top:32%; left:-15px;width:20px !important"><img src="images/tick.png" style="width:100%"/></div>';
 trackorderStatus+='<div id="status4" class="'+StatusClassArray[3]+'" style="position:relative;top:53%;;left:-15px; width:20px !important"><img src="images/tick.png" style="width:100%" /></div></div>';
+
+alert(trackorderStatus);
 
 					$('#trackorderstatusview').html('');
 					$('#trackorderstatusview').html(trackorderStatus);
