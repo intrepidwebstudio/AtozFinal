@@ -1929,10 +1929,14 @@ function loadliveorder()
 					 trackorderList+='<li onclick="changepagetrack(\''+element.id+'\')"><div ><span style="float:left;">'+element.order_id+'</span><span style="float:right;">Rs '+element.order_amount+'  &emsp;&emsp; '+element.order_date+'</span></div></li>';
 				});
 	alert(trackorderList);
+				alert('1');
 	
 				$('#trackorderlist').empty().append(trackorderList);
+				alert('2');
 				$('#trackorderlist').trigger("create");
+				alert('3');
 				$('#trackorderlist').listview().listview('refresh');
+				alert('4');
 
 				
 				$.mobile.changePage('#trackorder',{  transition:'slide' });
